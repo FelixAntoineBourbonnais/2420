@@ -1,0 +1,33 @@
+.item-a {
+grid-area: title;
+}
+.item-b {
+grid-area: parameters;
+}    
+.item-c {
+grid-area: mass;
+}
+.item-d {
+grid-area: species;
+}
+.item-e {
+grid-area: output;
+}
+.item-f {
+grid-area: buttons;
+}
+.item-g {
+grid-area: parameters;
+}
+
+.container {
+grid-template-columns: 50px 50px 50px 50px;
+grid-template-rows: auto;
+grid-template-areas: 
+    "title"
+    "parameters parameters parameters"
+    "mass mass mass species species species"
+    "mass mass mass species species species"
+    "output output output buttons buttons buttons"
+    "output output output buttons buttons buttons";
+}
