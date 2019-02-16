@@ -1,13 +1,146 @@
+<html>
+<link href="factsage.css" media="all" rel="stylesheet" type="text/css" />
+
+<head>
+  <title>Create</title>
 </head>
-<body>
-<div class="grid-container">
-  <div class="item-a">Header</div>
-  <div class="item-b">Menu</div>
-  <div class="item-c">Main</div>  
-  <div class="item-d">Right</div>
-  <div class="item-e">Footer</div>
-  <div class="item-f">Footer</div>
+
+<div class="app-container">
+
+  <div class="grid">
+
+    <div class="description">
+      Chemical equilibria of an ideal gas with pure solids and liquids
+    </div>
+
+    <div class="constants">
+
+      <div>
+        T:
+        <input type="text">
+        Units:
+        <select>
+          <option value="K">K</option>
+          <option value="C">C</option>
+        </select>
+      </div>
+
+      <div>
+        mass:
+        <select>
+          <option value="gram">gram</option>
+          <option value="mol">mol</option>
+        </select>
+      </div>
+
+      <div>
+        P:
+        <input type="text">
+        Units:
+        <select>
+          <option value="atm">atm</option>
+          <option value="bar">bar</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="molecule-details">
+
+      <div>
+        Mass
+        <br>
+        <input type="text">
+      </div>
+
+      <div>
+        Species
+        <br>
+        <input type="text">
+        +
+      </div>
+
+      <div>
+        Mass
+        <br>
+        <input type="text">
+      </div>
+
+      <div>
+        Species
+        <br>
+        <input type="text">
+        <button>+</button>
+      </div>
+
+    </div>
+
+    <div class="parameters">
+
+      <div class="output">
+
+        <div>
+          <b>Output:</b>
+        </div>
+
+        <div>
+          Concentration cut-off
+        </div>
+
+        <div>
+          <select>
+            <option value="70">1e-70</option>
+            <option value="50">1e-50</option>
+            <option value="30">1e-30</option>
+            <option value="20">1e-20</option>
+            <option value="15">1e-15</option>
+            <option value="10">1e-10</option>
+            <option value="8">1e-8</option>
+            <option value="6">1e-6</option>
+            <option value="5">1e-5</option>
+          </select>
+        </div>
+
+        <div></div>
+
+        <div>
+          Format
+        </div>
+
+        <div>
+          <select>
+            <option value="Extended">Extended</option>
+            <option value="ChemSage">ChemSage</option>
+            <option value="FACT">FACT</option>
+          </select>
+        </div>
+
+        <div></div>
+
+        <div>
+          Distribution
+        </div>
+
+        <div>
+            <select>
+                <option value="no">no</option>
+                <option value="yes">yes</option>
+              </select>
+        </div>
+
+      </div>
+
+      <div>
+        <button>Clear</button>
+        <button>Default</button>
+        <button>Calculate >></button>
+      </div>
+
+    </div>
+
+  </div>
+
 </div>
 
-</body>
+
 </html>
