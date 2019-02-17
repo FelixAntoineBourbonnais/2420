@@ -4,7 +4,7 @@ function resetAll() {
 
 function clearAll() {
     var i,
-        inputData = document.getElementsByClassName("changeable");
+        inputData = document.getElementsByClassName("clearable");
 
     for (i = 0; i < inputData.length; i++) {
         inputData[i].value = '';
