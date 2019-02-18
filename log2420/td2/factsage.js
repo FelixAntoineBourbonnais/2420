@@ -21,10 +21,13 @@ function addElement() {
     document.getElementById("addedMass").innerHTML += massToAdd;
     document.getElementById("addedSpecies").innerHTML += speciesToAdd;
 }
+
 function calculate() {
     var i,
         formule = '',
         inputData = document.getElementsByClassName("clearable");
+    
+    document.getElementById("spinner").style.display = "inline";
 
     for (i = 0; i < inputData.length; i++) {
         if (inputData[i].value.length !== 0) {
@@ -36,25 +39,21 @@ function calculate() {
         }
     }
     formule = formule + '= ?';
-    console.log(formule);
     postFormula(formule);
-
 }
 
 function postFormula(formule) {
-    var xhttp = new XMLHttpRequest();
+    /*var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("table").innerHTML = this.responseText;
-        }
-        else {
-            alert('Error: ' + xhttp.status);
-        }
+        document.getElementById("table").innerHTML = this.responseText;
     };
+
     xhttp.open("POST", "http://localhost:8080/", true);
     xhttp.withCredentials = true;
     xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send({ 'request': "authentication token" });
+    xhttp.send({ 'request': "authentication token" });*/
+
+    //document.getElementById("spinner").style.display = "none";
 }
 
 function isNumeric(n) {
