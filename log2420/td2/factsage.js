@@ -14,10 +14,10 @@ function clearAll() {
 function addElement() {
     var massToAdd = document.getElementById("massElement").innerHTML + "<br>";
     var speciesToAdd = document.getElementById("speciesElement").innerHTML + "<br>";
-    
+
     document.getElementById("addedMass").style.display = "inline";
     document.getElementById("addedSpecies").style.display = "inline";
-    
+
     document.getElementById("addedMass").innerHTML += massToAdd;
     document.getElementById("addedSpecies").innerHTML += speciesToAdd;
 }
@@ -26,8 +26,8 @@ function calculate() {
     var i,
         formule = '',
         inputData = document.getElementsByClassName("clearable");
-    
-    document.getElementById("spinner").style.display = "inline";
+
+    preloader();
 
     for (i = 0; i < inputData.length; i++) {
         if (inputData[i].value.length !== 0) {
@@ -51,13 +51,16 @@ function postFormula(formule) {
     xhttp.onreadystatechange = function () {
         document.getElementById("table").innerHTML = this.responseText;
     };
+
     xhttp.open("POST", url, true);
-
-    //xhttp.withCredentials = true;
-    xhttp.setRequestHeader("Content-Type", "application/json");
-    //xhttp.send({ 'request': "authentication token" });
     xhttp.send(formule);
+}
+    
+function preloader() {
+    document.getElementById("spinner").style.display = "inline";
+}
 
+function postloader() {
     document.getElementById("spinner").style.display = "none";
 }
 
