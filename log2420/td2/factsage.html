@@ -51,18 +51,21 @@
 
       <div class="molecule-details">
 
-        <div>
+        <div id="massElement">
           Mass
           <br>
           <input type="text" value="" class="clearable" />
         </div>
 
-        <div>
+        <div id="speciesElement">
           Species
           <br>
           <input type="text" value="Si" class="clearable" />
           +
         </div>
+
+        <div id="addedMass" style="display: none"></div>
+        <div id="addedSpecies" style="display: none"></div>
 
         <div>
           Mass
@@ -74,9 +77,8 @@
           Species
           <br>
           <input type="text" value="O2" class="clearable" />
-          <input type="button" value="+" onclick="" />
-
-        </div>
+          <input type="button" value="+" onclick="addElement()" />
+        </div>    
 
       </div>
 
