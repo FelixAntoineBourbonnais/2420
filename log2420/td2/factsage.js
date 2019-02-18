@@ -40,12 +40,13 @@ function calculate() {
     }
     formule = formule + '= ?';
     postFormula(formule);
+    console.log(formule);
 }
 
 function postFormula(formule) {
+    
     var xhttp = new XMLHttpRequest();
     var url = "http://localhost:8080/";
-    var params = "";
 
     xhttp.onreadystatechange = function () {
         document.getElementById("table").innerHTML = this.responseText;
@@ -55,7 +56,7 @@ function postFormula(formule) {
     //xhttp.withCredentials = true;
     xhttp.setRequestHeader("Content-Type", "application/json");
     //xhttp.send({ 'request': "authentication token" });
-    xhttp.send(params);
+    xhttp.send(formule);
 
     document.getElementById("spinner").style.display = "none";
 }
