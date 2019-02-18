@@ -24,10 +24,15 @@ function calculate() {
                 formule = formule + inputData[i].value + ' + ';
             }
         }
-
     }
     formule = formule + '= ?';
     console.log(formule);
+    postFormula(formule);
+
+}
+
+function postFormula(formule) {
+
 }
 
 function isNumeric(n) {
