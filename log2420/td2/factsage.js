@@ -43,17 +43,17 @@ function calculate() {
 }
 
 function postFormula(formule) {
-    /*var xhttp = new XMLHttpRequest();
+    var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         document.getElementById("table").innerHTML = this.responseText;
     };
-
+    
     xhttp.open("POST", "http://localhost:8080/", true);
     xhttp.withCredentials = true;
     xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send({ 'request': "authentication token" });*/
+    xhttp.send({ 'request': "authentication token" });
 
-    //document.getElementById("spinner").style.display = "none";
+    document.getElementById("spinner").style.display = "none";
 }
 
 function isNumeric(n) {
