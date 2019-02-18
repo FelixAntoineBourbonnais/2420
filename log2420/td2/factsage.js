@@ -43,6 +43,9 @@ function calculate() {
 
 function postFormula(formule) {
     var xhttp = new XMLHttpRequest();
+    var url = "http://localhost:8080/";
+    var params = "";
+
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("table").innerHTML = this.responseText;
@@ -51,10 +54,12 @@ function postFormula(formule) {
             alert('Error: ' + xhttp.status);
         }
     };
-    xhttp.open("POST", "http://localhost:8080/", true);
-    xhttp.withCredentials = true;
+    xhttp.open("POST", url, true);
+
+    //xhttp.withCredentials = true;
     xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.send({ 'request': "authentication token" });
+    //xhttp.send({ 'request': "authentication token" });
+    xhttp.send(params);
 }
 
 function isNumeric(n) {
