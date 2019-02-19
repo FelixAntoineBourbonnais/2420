@@ -32,14 +32,14 @@ function calculate() {
     for (i = 0; i < inputData.length; i++) {
         if (inputData[i].value.length !== 0) {
             if (isNumeric(inputData[i].value) || (i + 1) === inputData.length) {
-                formule = formule + inputData[i].value + ' ';
+                formule = formule + inputData[i].value;
             } else {
                 formule = formule + inputData[i].value + ' + ';
             }
         }
     }
-    formule = formule + '= ?';
     postFormula(formule);
+    console.log(formule);
 }
 
 function postFormula(formule) {

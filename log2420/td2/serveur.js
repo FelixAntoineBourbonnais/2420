@@ -25,7 +25,7 @@ const formule = 'PROGRAM=EQUILIB&TMIN=1000&T_units=TK&MASS=X&P_value=1&PRESSURE=
 
 var objFormule = qs.parse(formule);
 
-var dataFile = fs.readFileSync('data-output.json', 'UTF8');
+var dataFile = fs.readFileSync('data-output2.json', 'UTF8');
 
 var s = http.createServer(function (req, res) {
     var postData = 'initial';
