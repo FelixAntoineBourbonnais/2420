@@ -27,7 +27,7 @@ function calculate() {
         formule = '',
         inputData = document.getElementsByClassName("clearable");
 
-    preloader();
+    preLoader();
 
     for (i = 0; i < inputData.length; i++) {
         if (inputData[i].value.length !== 0) {
@@ -46,21 +46,25 @@ function postFormula(formule) {
     
     var xhttp = new XMLHttpRequest();
     var url = "http://localhost:8080/";
-
+    
     xhttp.onreadystatechange = function () {
         document.getElementById("table").innerHTML = this.responseText;
+
+        // When readyState = 4, the post request is "Completed"
+        if(xhttp.readyState == 4)
+            postLoader();
     };
 
     xhttp.open("POST", url, true);
     xhttp.send(formule);
 }
     
-function preloader() {
-    document.getElementById("spinner").style.display = "inline";
+function preLoader() {
+    document.getElementById("loader").style.display = "inline";
 }
 
-function postloader() {
-    document.getElementById("spinner").style.display = "none";
+function postLoader() {
+    document.getElementById("loader").style.display = "none";
 }
 
 function isNumeric(n) {
