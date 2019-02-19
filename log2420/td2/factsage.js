@@ -43,6 +43,7 @@ function calculate() {
 }
 
 function postFormula(formule) {
+    
     var xhttp = new XMLHttpRequest();
     var url = "http://localhost:8080/";
 
@@ -53,7 +54,7 @@ function postFormula(formule) {
     xhttp.open("POST", url, true);
     xhttp.send(formule);
 }
-
+    
 function preloader() {
     document.getElementById("spinner").style.display = "inline";
 }
