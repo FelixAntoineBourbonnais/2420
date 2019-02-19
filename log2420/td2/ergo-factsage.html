@@ -1,8 +1,8 @@
 <html>
 
-<link href="factsage.css" media="all" rel="stylesheet" type="text/css" />
+<link href="ergo-factsage.css" media="all" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="factsage.js" type="text/javascript"></script>
+<script src="ergo-factsage.js" type="text/javascript"></script>
 
 <head>
     <title>Create</title>
@@ -52,35 +52,43 @@
 
             <div class="molecule-details">
 
-                <div id="massElement">
-                    Mass
-                    <br>
-                    <input type="text" value="" class="clearable" />
+                <div class="molecule-values" id="normalValues">
+
+                    <div id="massElement">
+                        Mass
+                        <br>
+                        <input type="text" value="" class="clearable" />
+                    </div>
+
+                    <div id="speciesElement">
+                        Species
+                        <br>
+                        <input type="text" value="Si" class="clearable" />
+                        +
+                    </div>
+
                 </div>
 
-                <div id="speciesElement">
-                    Species
-                    <br>
-                    <input type="text" value="Si" class="clearable" />
-                    +
+                <div id="newValues" class="molecule-values" style="display: none"></div>
+
+                <div class="molecule-values">
+
+                    <div>
+                        Mass
+                        <br>
+                        <input type="text" value=1.5 class="clearable" />
+                    </div>
+
+                    <div>
+                        Species
+                        <br>
+                        <input type="text" value="O2" class="clearable" />
+                    </div>
+
+                   
+                    
                 </div>
-
-                <div id="addedMass" style="display: none"></div>
-                <div id="addedSpecies" style="display: none"></div>
-
-                <div>
-                    Mass
-                    <br>
-                    <input type="text" value=1.5 class="clearable" />
-                </div>
-
-                <div>
-                    Species
-                    <br>
-                    <input type="text" value="O2" class="clearable" />
-                    <input type="button" value="+" onclick="addElement()" />
-                </div>
-
+                <input style="width: 100px;"  type="button" value="+" onclick="addElement()" />
             </div>
 
             <div class="parameters">

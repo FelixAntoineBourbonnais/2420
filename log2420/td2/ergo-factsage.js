@@ -12,14 +12,9 @@ function clearAll() {
 }
 
 function addElement() {
-    var massToAdd = document.getElementById("massElement").innerHTML + "<br>";
-    var speciesToAdd = document.getElementById("speciesElement").innerHTML + "<br>";
-
-    document.getElementById("addedMass").style.display = "inline";
-    document.getElementById("addedSpecies").style.display = "inline";
-
-    document.getElementById("addedMass").innerHTML += massToAdd;
-    document.getElementById("addedSpecies").innerHTML += speciesToAdd;
+    var fieldToAdd = document.getElementById("normalValues").innerHTML;
+    document.getElementById("newValues").innerHTML += fieldToAdd;
+    document.getElementById("newValues").style.display = "inline";
 }
 
 function calculate() {
