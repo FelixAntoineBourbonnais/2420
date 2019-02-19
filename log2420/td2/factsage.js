@@ -55,6 +55,7 @@ function postFormula(formule) {
 
             var myObj = JSON.parse(this.responseText);
 
+            // Table 1: Conditions
             var conditions = "<table><tbody>";
             for (x in myObj.Conditions) {
                 conditions += "<tr>";
@@ -65,6 +66,7 @@ function postFormula(formule) {
             }
             conditions += "</tbody><table>";
 
+            // Table 2: Stream Constituents
             var streamConsitutents = "<table><tbody>";
             streamConsitutents += "<tr>";
             streamConsitutents += "<th>" + "STREAM CONSTITUENTS" + "</th>";
@@ -79,6 +81,7 @@ function postFormula(formule) {
             }
             streamConsitutents += "</tbody><table>";
 
+            // Table 3: Phase
             var phase = "<table><tbody>";
             phase += "<tr>";
             phase += "<th> </th>";
@@ -104,6 +107,7 @@ function postFormula(formule) {
             }
             phase += "</tbody><table>";
 
+            // Table 4: CpHSGV
             x = 0;
             var cphsgv = "<table><tbody>";
             cphsgv += "<tr>";
@@ -127,6 +131,7 @@ function postFormula(formule) {
             cphsgv += "</tr>";
             cphsgv += "</tbody><table>";
 
+            // Affichage des tableaux 
             document.getElementById("conditions").innerHTML = conditions;
             document.getElementById("streamConstituents").innerHTML = streamConsitutents;
             document.getElementById("phase").innerHTML = phase;
