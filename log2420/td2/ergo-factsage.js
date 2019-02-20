@@ -12,9 +12,15 @@ function clearAll() {
 }
 
 function addElement() {
-    var fieldToAdd = document.getElementById("normalValues").innerHTML;
-    document.getElementById("newValues").innerHTML += fieldToAdd;
-    document.getElementById("newValues").style.display = "inline";
+    
+    document.getElementById("newValues").style.display = "";
+
+    var massToAdd = document.getElementById("massElement").innerHTML + "<br>";
+    var speciesToAdd = document.getElementById("speciesElement").innerHTML + "<br>";
+
+    
+    document.getElementById("addedMass").innerHTML += massToAdd;
+    document.getElementById("addedSpecies").innerHTML += speciesToAdd;
 }
 
 function calculate() {
@@ -22,8 +28,10 @@ function calculate() {
         formule = '',
         inputData = document.getElementsByClassName("clearable");
 
+    // Displays the spinner
     preLoader();
 
+    // Formulates the proper formula
     for (i = 0; i < inputData.length; i++) {
         if (inputData[i].value.length !== 0) {
             if (isNumeric(inputData[i].value) || (i + 1) === inputData.length) {
@@ -48,9 +56,10 @@ function postFormula(formule) {
         // When readyState = 4, the post request is "Completed"
         if (xhttp.readyState == 4 && this.status == 200) {
             postLoader();
-
+            
             var myObj = JSON.parse(this.responseText);
 
+            // Table 1: Conditions
             var conditions = "<table><tbody>";
             for (x in myObj.Conditions) {
                 conditions += "<tr>";
@@ -61,6 +70,7 @@ function postFormula(formule) {
             }
             conditions += "</tbody><table>";
 
+            // Table 2: Stream Constituents
             var streamConsitutents = "<table><tbody>";
             streamConsitutents += "<tr>";
             streamConsitutents += "<th>" + "STREAM CONSTITUENTS" + "</th>";
@@ -75,6 +85,7 @@ function postFormula(formule) {
             }
             streamConsitutents += "</tbody><table>";
 
+            // Table 3: Phase
             var phase = "<table><tbody>";
             phase += "<tr>";
             phase += "<th> </th>";
@@ -100,6 +111,7 @@ function postFormula(formule) {
             }
             phase += "</tbody><table>";
 
+            // Table 4: CpHSGV
             x = 0;
             var cphsgv = "<table><tbody>";
             cphsgv += "<tr>";
@@ -123,6 +135,7 @@ function postFormula(formule) {
             cphsgv += "</tr>";
             cphsgv += "</tbody><table>";
 
+            // Display tables
             document.getElementById("conditions").innerHTML = conditions;
             document.getElementById("streamConstituents").innerHTML = streamConsitutents;
             document.getElementById("phase").innerHTML = phase;

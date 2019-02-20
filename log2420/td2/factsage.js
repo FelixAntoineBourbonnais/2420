@@ -27,8 +27,10 @@ function calculate() {
         formule = '',
         inputData = document.getElementsByClassName("clearable");
 
+    // Displays the spinner
     preLoader();
 
+    // Formulates the proper formula
     for (i = 0; i < inputData.length; i++) {
         if (inputData[i].value.length !== 0) {
             if (isNumeric(inputData[i].value) || (i + 1) === inputData.length) {
@@ -131,7 +133,7 @@ function postFormula(formule) {
             cphsgv += "</tr>";
             cphsgv += "</tbody><table>";
 
-            // Affichage des tableaux 
+            // Display Tables
             document.getElementById("conditions").innerHTML = conditions;
             document.getElementById("streamConstituents").innerHTML = streamConsitutents;
             document.getElementById("phase").innerHTML = phase;
