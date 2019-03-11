@@ -1,11 +1,22 @@
   .wrapper {
-    width: 100vh;
-    height: 100vh;
+    width: 90vh;
+    height: 90vh;
     display: grid;
     grid-template-rows: auto auto;
+    grid-template-columns: auto;
   }
 
   .header {
+    height: 120px;
+    width: 100%;
+    padding: 16px;
+    font-size: 18px;
+    background-color: rgb(199, 228, 240);
     display: grid;
     grid-template-columns: auto auto;
+  }
+
+  #icons {
+      background-color: red;
+      text-align: left;
   }
