@@ -1,0 +1,11 @@
+  .wrapper {
+    width: 100vh;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
