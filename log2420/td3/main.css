@@ -55,6 +55,7 @@
     padding: 12px;
     display: grid;
     grid-template-rows: 10px auto;
+    grid-template-columns: auto auto;
     grid-gap: 12px;
   }
   
@@ -81,4 +82,13 @@
     color: white;
     font-size: 22px;
   }
-    
+
+  #options-liste {
+    text-align: right;
+    padding-top: 2px;
+    font-size: 18px;
+  }
+
+  #options-liste > * {
+      padding-right: 10px;
+  }
