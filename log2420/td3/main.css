@@ -1,22 +1,84 @@
   .wrapper {
-    width: 90vh;
-    height: 90vh;
+    width: 100vw;
+    height: 100vh;
+    min-width: 800px;
+    padding: 5px;
     display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto;
+    grid-template-rows: 120px 80px auto;
+    background-color: rgb(199, 228, 240);
   }
 
   .header {
-    height: 120px;
-    width: 100%;
-    padding: 16px;
-    font-size: 18px;
-    background-color: rgb(199, 228, 240);
+    padding: 15px;
+    font-size: 22px;
     display: grid;
     grid-template-columns: auto auto;
   }
 
-  #icons {
-      background-color: red;
-      text-align: left;
+  .header > #icons {
+      text-align: right;
+      padding-top: 25px;
+      display: grid;
+      grid-template-columns: auto 70px 70px 70px 70px;
   }
+
+  .header > #logo {
+      padding-left: 40px;
+  }
+
+  #icons > * {
+    display: inline-block;
+    padding: 16px;
+  }
+
+  #username{
+    font-size: 14px;
+    color: rgb(7, 146, 7);
+  }
+
+  .descriptif {
+    display: grid;
+    grid-template-columns: 1000px auto;
+    grid-gap: 2px;
+  }
+
+  .descriptif > #groupe-actif-entete {
+    background-color: rgb(95, 165, 149);
+    padding: 12px;
+    display: grid;
+    grid-template-rows: 10px auto;
+    grid-gap: 12px;
+  }
+
+  .descriptif > #liste-groupe-entete {
+    background-color: rgb(95, 165, 149);
+    padding: 12px;
+    display: grid;
+    grid-template-rows: 10px auto;
+    grid-gap: 12px;
+  }
+  
+  .chat {
+    display: grid;
+    grid-template-columns: 1000px auto;
+    grid-gap: 2px;
+  }
+
+  .chat > #groupe-actif {
+      background-color: rgb(232, 248, 244);
+    }
+
+  .chat > #liste-groupe {
+    background-color: rgb(232, 248, 244);
+  }
+  
+  .smaller-text {
+    color: white;
+    font-size: 16px;
+  }
+
+  .bigger-text {
+    color: white;
+    font-size: 22px;
+  }
+    
