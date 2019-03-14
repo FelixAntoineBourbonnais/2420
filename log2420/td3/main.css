@@ -1,7 +1,7 @@
   .wrapper {
     width: auto;
     height: auto;
-    min-width: 800px;
+    min-width: 1100px;
     padding: 5px;
     display: grid;
     grid-template-rows: 120px 80px auto;
@@ -71,27 +71,59 @@
     display: grid;
     grid-template-rows: 520px 50px auto;
   }
-
+  
   #chat-area {
-    padding: 50px;
+    padding: 30px;
   }
 
-  #chat-area > .received-message {
-    padding: 10px;
+  .sent-message {
+    float: right;
+  }
+
+  .received-message > * {
+    padding: 5px;
+  }
+  
+  #received-inner-text{
+    padding: 12px;
     background-color: rgb(188, 210, 219);
     border-radius: 20px;
     text-align: left;
-    width: 30%;
+    width: 350px;
     word-wrap: break-word;
   }
 
-  #chat-area > .sent-message {
-    padding: 10px;
-    background-color: rgb(188, 210, 219);
-    border-radius: 20px;
+  #received-name{
+    color: rgb(117, 143, 153);
+  }
+
+  #received-date {
+    font-style: italic;
+    color: rgb(37, 40, 41);
+    font-size: 15px;
+    padding-left: 20px; 
+  }
+
+  .sent-message > *{
+    padding: 5px;
+  }
+
+  #sent-inner-text{
     text-align: right;
-    width: 30%;
+    color: white;
+    padding: 12px;
+    background-color: rgb(52, 100, 190);
+    border-radius: 20px;
+    width: 350px;
     word-wrap: break-word;
+  }
+
+  #sent-date {
+    font-style: italic;
+    color: rgb(37, 40, 41);
+    font-size: 15px;
+    float: right;
+    padding-right: 20px;
   }
 
   #text-area {
@@ -114,18 +146,17 @@
     height: 50px;
     border-radius: 8px;
     font-size: 16px;
-    border-color: rgb(232, 248, 244);  
+    border-color: rgb(232, 248, 244);
   }
   
   .chat > #liste-groupe {
     background-color: rgb(232, 248, 244);
   }
 
-  #group {
-      height: 60px;
-      background-color: rgb(182, 226, 215);
+  .group {
+      height: 60px; 
       display: grid;
-      grid-template-columns: 100px 80px auto;
+      grid-template-columns: 100px auto auto;
       font-size: 20px;
   }
 
@@ -135,18 +166,25 @@
       color: rgb(255, 136, 0);
   }
 
+  #plus {
+    text-align: center;
+    padding-top: 26px;
+    color: rgb(95, 165, 149);
+  }
+
   #group-name {
       font-size: 22px;
       padding-top: 20px;
       color: rgb(72, 72, 197); 
+      padding-left: 30px;
+  }
+
+  #group-name > #group-text-default{
+    padding-top: 5px;
   }
 
   #group-default {
-    font-size: 12px;
     padding-top: 24px;
-    color: rgb(5, 152, 211);
-    font-style: italic;
-    font-weight: bold;
   }
 
   #group-text-default {
@@ -158,6 +196,13 @@
     border: 1.5px solid rgb(5, 152, 211);
     border-radius: 12px;
     font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    color: rgb(5, 152, 211);
+  }
+
+  .chat > #groupe-actif {
+    background-color: rgb(232, 248, 244);
   }
     
   .smaller-text {
@@ -183,4 +228,17 @@
 
   .fas {
     display: initial;
+  }
+
+  .light {
+    background-color: rgb(208, 240, 230);
+  }
+
+  .dark {
+    background-color: rgb(180, 224, 214);
+  }
+
+  .input {
+    padding-top: 0;
+    padding-left: 0;
   }
