@@ -1,6 +1,6 @@
   .wrapper {
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    height: auto;
     min-width: 800px;
     padding: 5px;
     display: grid;
@@ -10,7 +10,7 @@
 
   .header {
     padding: 15px;
-    font-size: 22px;
+    font-size: 24px;
     display: grid;
     grid-template-columns: auto auto;
   }
@@ -29,6 +29,7 @@
   #icons > * {
     display: inline-block;
     padding: 16px;
+    color: rgb(80, 77, 77);
   }
 
   #username{
@@ -38,7 +39,7 @@
 
   .descriptif {
     display: grid;
-    grid-template-columns: 1000px auto;
+    grid-template-columns: auto 450px;
     grid-gap: 2px;
   }
 
@@ -61,18 +62,104 @@
   
   .chat {
     display: grid;
-    grid-template-columns: 1000px auto;
+    grid-template-columns: auto 450px;
     grid-gap: 2px;
   }
 
   .chat > #groupe-actif {
-      background-color: rgb(232, 248, 244);
-    }
+    background-color: rgb(232, 248, 244);
+    display: grid;
+    grid-template-rows: 520px 50px auto;
+  }
 
+  #chat-area {
+    padding: 50px;
+  }
+
+  #chat-area > .received-message {
+    padding: 10px;
+    background-color: rgb(188, 210, 219);
+    border-radius: 20px;
+    text-align: left;
+    width: 30%;
+    word-wrap: break-word;
+  }
+
+  #chat-area > .sent-message {
+    padding: 10px;
+    background-color: rgb(188, 210, 219);
+    border-radius: 20px;
+    text-align: right;
+    width: 30%;
+    word-wrap: break-word;
+  }
+
+  #text-area {
+    text-align: center;
+    background-color: rgb(95, 165, 149);
+    display: grid;
+    grid-template-columns: 100px auto 100px;
+  }
+
+  #text-area > span,i {
+    padding-top: 16px;
+    color: white;
+  }
+
+  #text-area > i {
+    font-size: 24px;
+  }
+
+  #text-input {
+    height: 50px;
+    border-radius: 8px;
+    font-size: 16px;
+    border-color: rgb(232, 248, 244);  
+  }
+  
   .chat > #liste-groupe {
     background-color: rgb(232, 248, 244);
   }
-  
+
+  #group {
+      height: 60px;
+      background-color: rgb(182, 226, 215);
+      display: grid;
+      grid-template-columns: 100px 80px auto;
+      font-size: 20px;
+  }
+
+  #star {
+      text-align: center;
+      padding-top: 22px;
+      color: rgb(255, 136, 0);
+  }
+
+  #group-name {
+      font-size: 22px;
+      padding-top: 20px;
+      color: rgb(72, 72, 197); 
+  }
+
+  #group-default {
+    font-size: 12px;
+    padding-top: 24px;
+    color: rgb(5, 152, 211);
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  #group-text-default {
+    background-color: white;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1.5px solid rgb(5, 152, 211);
+    border-radius: 12px;
+    font-size: 14px;
+  }
+    
   .smaller-text {
     color: white;
     font-size: 16px;
@@ -85,10 +172,15 @@
 
   #options-liste {
     text-align: right;
+    display: block;
     padding-top: 2px;
-    font-size: 18px;
   }
 
   #options-liste > * {
-      padding-right: 10px;
+      padding-right: 14px;
+      color: white;
+  }
+
+  .fas {
+    display: initial;
   }

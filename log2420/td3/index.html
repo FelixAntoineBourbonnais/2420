@@ -6,9 +6,9 @@
 <div class="wrapper">
     <div class="header">
         <div id="logo"> <img src="PolyChat.png" width="288px" height="80px"> </div>
-        <div id="icons"> 
+        <div id="icons">
             <i></i>
-            <i class="far fa-user" > 
+            <i class="far fa-user">
                 <br><span id="username">username</span>
             </i>
             <i class="fas fa-bell"></i>
@@ -20,21 +20,43 @@
     <div class="descriptif">
         <div id="groupe-actif-entete">
             <span class="smaller-text">Groupe actif:</span>
-            <span class="bigger-text">Général</span>    
+            <span class="bigger-text">Général</span>
         </div>
         <div id="liste-groupe-entete">
             <span class="smaller-text">Liste des groupes:</span>
             <span></span>
-            <span class="bigger-text">Groupes disponibles</span> 
-            <span id="options-liste"> 
-                <i class="fas fa-plus" style="color: white;"></i>
-                <i class="fas fa-cogs" style="color: white;"></i>
+            <span class="bigger-text">Groupes disponibles</span>
+            <span id="options-liste">
+                <i class="fas fa-plus"></i>
+                <i class="fas fa-cogs"></i>
             </span>
         </div>
     </div>
 
     <div class="chat">
-        <div id="groupe-actif"></div>
-        <div id="liste-groupe"></div>
+        <div id="groupe-actif">
+            <div id="chat-area">
+                <div class="received-message">
+                    <p>MessagesageMessageMessagesage MessageMessagesageMessageMessagesageMessage</p>
+                </div>
+                <div class="sent-message">
+                    <p>MessagesageMessageMessagesage MessageMessagesageMessageMessagesageMessage</p>
+                </div>
+            </div>
+            <div id="text-area">
+                <i class="far fa-thumbs-up"></i>
+                <input type="text" id="text-input">
+                <span>Envoyer</span>
+            </div>
+        </div>
+        <div id="liste-groupe">
+            <div id="group">
+                <i id="star" class="fas fa-star"></i>
+                <div id="group-name">Général</div>
+                <div id="group-default">
+                    <span id="group-text-default">défaut</span>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
