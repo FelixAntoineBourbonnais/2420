@@ -172,6 +172,12 @@
     color: rgb(95, 165, 149);
   }
 
+  #minus {
+    text-align: center;
+    padding-top: 26px;
+    color: rgb(255, 136, 0);
+  }
+
   #group-name {
       font-size: 22px;
       padding-top: 20px;
