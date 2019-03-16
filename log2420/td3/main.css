@@ -1,4 +1,4 @@
-  .wrapper {
+  #wrapper {
     width: auto;
     height: auto;
     min-width: 1100px;
@@ -8,21 +8,21 @@
     background-color: rgb(210, 232, 241);
   }
 
-  .header {
+  #header {
     padding: 15px;
     font-size: 24px;
     display: grid;
     grid-template-columns: auto auto;
   }
 
-  .header > #icons {
+  #header > #icons {
       text-align: right;
       padding-top: 25px;
       display: grid;
       grid-template-columns: auto 70px 70px 70px 70px;
   }
 
-  .header > #logo {
+  #header > #logo {
       padding-left: 40px;
   }
 
@@ -37,13 +37,13 @@
     color: rgb(7, 146, 7);
   }
 
-  .descriptif {
+  #descriptif {
     display: grid;
     grid-template-columns: auto 450px;
     grid-gap: 2px;
   }
 
-  .descriptif > #groupe-actif-entete {
+  #descriptif > #active-group-header {
     background-color: rgb(95, 165, 149);
     padding: 12px;
     display: grid;
@@ -51,7 +51,7 @@
     grid-gap: 12px;
   }
 
-  .descriptif > #liste-groupe-entete {
+  #descriptif > #group-list-header {
     background-color: rgb(95, 165, 149);
     padding: 12px;
     display: grid;
@@ -60,13 +60,13 @@
     grid-gap: 12px;
   }
   
-  .chat {
+  #chat {
     display: grid;
     grid-template-columns: auto 450px;
     grid-gap: 2px;
   }
 
-  .chat > #groupe-actif {
+  #chat > #active-group {
     background-color: rgb(232, 248, 244);
     display: grid;
     grid-template-rows: 520px 50px auto;
@@ -149,7 +149,7 @@
     border-color: rgb(232, 248, 244);
   }
   
-  .chat > #liste-groupe {
+  #chat > #group-list {
     background-color: rgb(232, 248, 244);
   }
 
@@ -201,7 +201,7 @@
     color: rgb(5, 152, 211);
   }
 
-  .chat > #groupe-actif {
+  .chat > #active-group-header {
     background-color: rgb(232, 248, 244);
   }
     
@@ -215,13 +215,13 @@
     font-size: 22px;
   }
 
-  #options-liste {
+  #list-options {
     text-align: right;
     display: block;
     padding-top: 2px;
   }
 
-  #options-liste > * {
+  #list-options > * {
       padding-right: 14px;
       color: white;
   }
