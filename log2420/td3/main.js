@@ -1,14 +1,13 @@
-function toggleJoin() {
+$(document).ready(function () {
     togglePlusMinus();
-    joinChannel();
-}
+});
+
 
 function togglePlusMinus() {
-    $(document).ready(function(){
-        alert("sfdfgfdgfdg");
-        $("#plus").toggleClass("");
+    $("#channelIcon").click(function () {
+        $("#channelIcon").toggleClass("colorPlus colorMinus");
+        $("#channelIcon").toggleClass("fa-plus fa-minus");
     });
-
 }
 
 function joinChannel() {

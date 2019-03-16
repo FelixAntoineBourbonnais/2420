@@ -166,10 +166,17 @@
       color: rgb(255, 136, 0);
   }
 
-  #plus {
+  #channelIcon {
     text-align: center;
     padding-top: 26px;
+  }
+
+  .colorPlus {
     color: rgb(95, 165, 149);
+  }
+
+  .colorMinus {
+    color: rgb(255, 136, 0);
   }
 
   #minus {
