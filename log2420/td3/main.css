@@ -166,16 +166,17 @@
       color: rgb(255, 136, 0);
   }
 
-  #channelIcon {
+  #channel-icon {
     text-align: center;
     padding-top: 26px;
+    cursor: pointer;
   }
 
-  .colorPlus {
+  .color-plus {
     color: rgb(95, 165, 149);
   }
 
-  .colorMinus {
+  .color-minus {
     color: rgb(255, 136, 0);
   }
 
@@ -254,4 +255,8 @@
   .input {
     padding-top: 0;
     padding-left: 0;
+  }
+
+  #new-group {
+    cursor: pointer;
   }
