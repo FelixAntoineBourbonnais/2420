@@ -74,6 +74,13 @@
   
   #chat-area {
     padding: 30px;
+    overflow: auto;
+    overflow-y: visible;
+    overflow-x: hidden;
+  }
+
+  #chat-area > .sent-message, .received-message{
+    padding: 10px;
   }
 
   .sent-message {
@@ -133,12 +140,9 @@
     grid-template-columns: 100px auto 100px;
   }
 
-  #text-area > span,i {
+  #text-area > i {
     padding-top: 16px;
     color: white;
-  }
-
-  #text-area > i {
     font-size: 24px;
   }
 
@@ -149,8 +153,10 @@
     border-color: rgb(232, 248, 244);
   }
   
-  #chat > #group-list {
+  #group-list {
     background-color: rgb(232, 248, 244);
+    height: 570px;
+    overflow: auto;
   }
 
   .group {
@@ -259,4 +265,17 @@
 
   #new-group {
     cursor: pointer;
+  }
+
+  #send-button {
+    border: none;
+    background-color: rgb(95, 165, 149);
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+  }
+
+  #send-button:hover {
+    background-color: rgb(95, 165, 149);
   }

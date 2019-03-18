@@ -17,6 +17,7 @@ DEBUG:
 $(document).ready(function () {
     togglePlusMinus();
     newGroup();
+    sendMessage();
 });
 
 
@@ -51,6 +52,42 @@ function newGroup() {
         }).appendTo("#" + groupNumer);
 
         jQuery("<div></div>").appendTo("#" + groupNumer);
+    });
+}
+
+function sendMessage() {
+    $("#send-button").click(function () {
+        var textInput = ("#text-input").attr("value")
+        sentNumber = $(".sent-message").length;
+        console.log(sentNumber);
+
+        jQuery("<div></div>", {
+            id: sentNumber,
+            class: "sent-message",
+        }).appendTo("#chat-area");
+
+        jQuery("<div></div>", {
+            id: "sent-inner-text",
+            text: textInput,
+        }).appendTo("#" + sentNumber);
+
+        jQuery("<div></div>", {
+            id: "sent-date",
+            text: "Date",
+        }).appendTo("#" + sentNumber);
+    });
+
+    $("#text-input").keypress(function (e) {
+        if(e.which == 13){
+            $('#send-button').click();
+        }
+    });
+
+    $(window).on("scroll", function() {
+        var scrollHeight = $(document).height();
+        var scrollPosition = $(window).height() + $(window).scrollTop();
+        if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+        }
     });
 }
 
