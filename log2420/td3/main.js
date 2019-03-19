@@ -30,28 +30,28 @@ function togglePlusMinus() {
 
 function newGroup() {
     $("#new-group").click(function () {
-        groupNumer = $(".group").length;
+        groupNumber = $(".group").length;
         backgroundColor = "group light";
 
-        if (groupNumer % 2)
+        if (groupNumber % 2)
             backgroundColor = "group dark";
 
         jQuery("<div></div>", {
-            id: groupNumer,
+            id: groupNumber,
             class: backgroundColor,
         }).appendTo("#group-list");
 
         jQuery("<i></i>", {
             id: "channel-icon",
             class: "fas fa-plus color-plus",
-        }).appendTo("#" + groupNumer);
+        }).appendTo("#" + groupNumber);
 
         jQuery("<div></div>", {
             id: "group-name",
             text: "Groupe",
-        }).appendTo("#" + groupNumer);
+        }).appendTo("#" + groupNumber);
 
-        jQuery("<div></div>").appendTo("#" + groupNumer);
+        jQuery("<div></div>").appendTo("#" + groupNumber);
     });
 }
 
