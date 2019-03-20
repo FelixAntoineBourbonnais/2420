@@ -64,7 +64,7 @@ function sendMessage() {
         //var textInput = ("#text-input").val();
         sentNumber = $(".sent-message").length;
         var date = new Date();
-        var message = new Message("sentMessage", "Général", sentNumber, "Simon", date);
+        var message = new Message("onMessage", "Général", "TEST", "Simon", date);
         sendText(message);
         console.log(message);
 
@@ -93,7 +93,7 @@ function sendMessage() {
     });
 
     //scrollTop = $("#chat-area").get(0).scrollHeight;
-}
+        }
 
 function joinChannel() {
 
