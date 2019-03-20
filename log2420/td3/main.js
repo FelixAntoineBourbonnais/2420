@@ -1,6 +1,5 @@
 /*
 TODO: 
--enter fait envoyer le texte
 -bouton envoyer envoie le texte
 -afficher le texte envoyé dans le chat (avec bonne date)
 -Quand on click sur un channel, le nom du groupe actif change
@@ -12,9 +11,18 @@ TODO:
 
 DEBUG:
 -Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
-*/    
+*/
+var socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + "{Simon}");
+
+var callbacks = jQuery.Callbacks()
+Topic = {
+    publish: callbacks.fire,
+    subscribe: callbacks.add,
+    unsubscribe: callbacks.remove
+}
 
 $(document).ready(function () {
+    Topic.subscribe(sendText);
     togglePlusMinus();
     newGroup();
     sendMessage();
@@ -61,18 +69,16 @@ function newGroup() {
 
 function sendMessage() {
     $("#send-button").click(function () {
-        //var textInput = ("#text-input").val();
         sentNumber = $(".sent-message").length;
         var date = new Date();
-        var message = new Message("sentMessage", "Général", sentNumber, "Simon", date);
-        sendText(message);
-        console.log(message);
+        var message = new Message("onMessage", "Général", "sentNumber", "Simon", date);
+        Topic.publish(message);
 
         jQuery("<div></div>", {
             id: sentNumber,
             class: "sent-message",
         }).appendTo("#chat-area");
-        
+
         jQuery("<div></div>").appendTo("#" + sentNumber);
 
         jQuery("<div></div>", {
@@ -87,14 +93,10 @@ function sendMessage() {
     });
 
     $("#text-input").keypress(function (e) {
-        if(e.which == 13){
+        if (e.which == 13) {
             $('#send-button').click();
         }
     });
 
     //scrollTop = $("#chat-area").get(0).scrollHeight;
-}
-
-function joinChannel() {
-
 }
