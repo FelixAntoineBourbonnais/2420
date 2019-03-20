@@ -12,7 +12,7 @@ TODO:
 
 DEBUG:
 -Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
-*/
+*/    
 
 $(document).ready(function () {
     togglePlusMinus();
@@ -29,7 +29,11 @@ function togglePlusMinus() {
 }
 
 function newGroup() {
+
     $("#new-group").click(function () {
+        var groupName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
+
+
         groupNumber = $(".group").length;
         backgroundColor = "group light";
 
@@ -48,7 +52,7 @@ function newGroup() {
 
         jQuery("<div></div>", {
             id: "group-name",
-            text: "Groupe",
+            text: groupName,
         }).appendTo("#" + groupNumber);
 
         jQuery("<div></div>").appendTo("#" + groupNumber);
@@ -57,18 +61,23 @@ function newGroup() {
 
 function sendMessage() {
     $("#send-button").click(function () {
-        var textInput = ("#text-input").attr("value")
+        //var textInput = ("#text-input").val();
         sentNumber = $(".sent-message").length;
-        console.log(sentNumber);
+        var date = new Date();
+        var message = new Message("sentMessage", "Général", sentNumber, "Simon", date);
+        sendText(message);
+        console.log(message);
 
         jQuery("<div></div>", {
             id: sentNumber,
             class: "sent-message",
         }).appendTo("#chat-area");
+        
+        jQuery("<div></div>").appendTo("#" + sentNumber);
 
         jQuery("<div></div>", {
             id: "sent-inner-text",
-            text: textInput,
+            text: "saddsaads",
         }).appendTo("#" + sentNumber);
 
         jQuery("<div></div>", {
@@ -83,12 +92,7 @@ function sendMessage() {
         }
     });
 
-    $(window).on("scroll", function() {
-        var scrollHeight = $(document).height();
-        var scrollPosition = $(window).height() + $(window).scrollTop();
-        if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-        }
-    });
+    //scrollTop = $("#chat-area").get(0).scrollHeight;
 }
 
 function joinChannel() {

@@ -75,8 +75,6 @@
   #chat-area {
     padding: 30px;
     overflow: auto;
-    overflow-y: visible;
-    overflow-x: hidden;
   }
 
   #chat-area > .sent-message, .received-message{
@@ -277,5 +275,5 @@
   }
 
   #send-button:hover {
-    background-color: rgb(95, 165, 149);
+    background-color: rgb(109, 190, 172);
   }
