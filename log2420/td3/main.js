@@ -67,7 +67,9 @@ function sendMessage() {
         inputMessage = $("#text-input").val();
         sentNumber = $(".sent-message").length;
         var date = new Date();
-        var message = new Message("onMessage", "Général", "sentNumber", "Simon", date);
+        var message = new Message("onMessage", "Général", "TEST", "Simon", date);
+        sendText(message);
+        console.log(message);
         Topic.publish(message);
 
         jQuery("<div></div>", {
@@ -97,4 +99,8 @@ function sendMessage() {
     });
 
     //scrollTop = $("#chat-area").get(0).scrollHeight;
+        }
+
+function joinChannel() {
+
 }
