@@ -1,12 +1,9 @@
 /*
 TODO: 
--bouton envoyer envoie le texte
--afficher le texte envoyé dans le chat (avec bonne date)
 -Quand on click sur un channel, le nom du groupe actif change
 -Quand on click sur un channel, on voit bien qu'il est sélectionné
 -Channel par défaut est général, et on voit qu'il est sélectionné
 -on peut hover un channel et le curseur change
--Quand on veux créer un groupe, un popup apparait et on peut donner un nom au groupe
 -Le reste c'est des requetes au serveur
 
 DEBUG:

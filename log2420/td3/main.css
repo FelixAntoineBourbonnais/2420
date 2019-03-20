@@ -173,7 +173,6 @@
   #channel-icon {
     text-align: center;
     padding-top: 26px;
-    cursor: pointer;
   }
 
   .color-plus {
@@ -276,4 +275,10 @@
 
   #send-button:hover {
     background-color: rgb(109, 190, 172);
+    cursor: pointer;
+  }
+
+  .group:hover {
+    background-color: rgb(150, 199, 188);
+    cursor: pointer;
   }
