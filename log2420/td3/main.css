@@ -243,10 +243,6 @@
       color: white;
   }
 
-  .fas {
-    display: initial;
-  }
-
   .light {
     background-color: rgb(208, 240, 230);
   }
@@ -281,4 +277,9 @@
   .group:hover {
     background-color: rgb(150, 199, 188);
     cursor: pointer;
+  }
+
+  .fas, .far {
+    cursor: pointer;
+    display: initial;
   }
