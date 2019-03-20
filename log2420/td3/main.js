@@ -12,7 +12,7 @@ TODO:
 DEBUG:
 -Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
 */
-var socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + "{Simon}");
+var socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=Simon");
 
 var callbacks = jQuery.Callbacks()
 Topic = {
@@ -41,7 +41,6 @@ function newGroup() {
     $("#new-group").click(function () {
         var groupName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
 
-
         groupNumber = $(".group").length;
         backgroundColor = "group light";
 
@@ -69,6 +68,7 @@ function newGroup() {
 
 function sendMessage() {
     $("#send-button").click(function () {
+        inputMessage = $("#text-input").val();
         sentNumber = $(".sent-message").length;
         var date = new Date();
         var message = new Message("onMessage", "Général", "sentNumber", "Simon", date);
@@ -83,13 +83,15 @@ function sendMessage() {
 
         jQuery("<div></div>", {
             id: "sent-inner-text",
-            text: "saddsaads",
+            text: inputMessage,
         }).appendTo("#" + sentNumber);
 
         jQuery("<div></div>", {
             id: "sent-date",
-            text: "Date",
+            text: date,
         }).appendTo("#" + sentNumber);
+
+        $("#text-input").val("");
     });
 
     $("#text-input").keypress(function (e) {
