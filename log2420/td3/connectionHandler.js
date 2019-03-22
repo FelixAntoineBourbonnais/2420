@@ -1,30 +1,44 @@
 
-// var socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + "Simon");
+var socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + "Simon");
 
-var socket = new WebSocket("ws://localhost:3000");
+//var socket = new WebSocket("ws://localhost:3000");
 
 socket.onopen = function() {
-  var date = new Date();
-  var message = new Message("onMessage", "Général", "TEST", "Simon", date);
   sendText(message);
-
 }
 
 function sendText(message) {
-  console.log("readystate = " + socket.readyState);
-  console.log("readystate = " + socket.readyState);
   if(socket.readyState === 1) {
-    console.log("SEND TEXT");
     socket.send(JSON.stringify(message));
   }
 }
 
-socket.onMessage = function(event) {
-    var msg = JSON.parse(event.data);
-    console.log(msg);
+socket.onmessage = function(event) {
+    let msg = JSON.parse(event.data);
+    switch(msg.type) {
+        case "onMessage":
+            console.log("onMessage");
+            showMessage();
+            break;
+        case "onCreateChannel":
+            console.log("onCreateChannel");
+            break;
+        case "onJoinChannel":
+            console.log("onJoinChannel");
+            break;
+        case "onLeaveChannel":
+            console.log("onLeaveChannel");
+            break;
+        case "updateChannelsList":
+            console.log("updateChannelsList");
+            break;
+        case "onError":
+            console.log("onError");
+            break;
+    }
 }
 
 socket.onerror = function(event) {
-    var msg = JSON.parse(event.data);
+    let msg = JSON.parse(event.data);
     console.log(msg);
 }
