@@ -170,7 +170,7 @@
       color: rgb(255, 136, 0);
   }
 
-  #channel-icon {
+  .channel-icon {
     text-align: center;
     padding-top: 26px;
   }

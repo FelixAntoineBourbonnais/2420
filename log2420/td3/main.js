@@ -26,16 +26,16 @@ $(document).ready(function () {
 
 
 function togglePlusMinus() {
-    $(".group").on("click", "#channel-icon", function () {
-        $("#channel-icon").toggleClass("color-plus color-minus");
-        $("#channel-icon").toggleClass("fa-plus fa-minus");
+    $(".group").on("click", ".channel-icon", function () {
+        $(".channel-icon").toggleClass("color-plus color-minus");
+        $(".channel-icon").toggleClass("fa-plus fa-minus");
     });
 }
 
 function newGroup() {
 
     $("#new-group").click(function () {
-        var groupName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
+        let groupName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
 
         groupNumber = $(".group").length;
         backgroundColor = "group light";
@@ -49,8 +49,7 @@ function newGroup() {
         }).appendTo("#group-list");
 
         jQuery("<i></i>", {
-            id: "channel-icon",
-            class: "fas fa-plus color-plus",
+            class: "fas fa-plus color-plus channel-icon",
         }).appendTo("#" + groupNumber);
 
         jQuery("<div></div>", {
@@ -64,31 +63,10 @@ function newGroup() {
 
 function sendMessage() {
     $("#send-button").click(function () {
-        inputMessage = $("#text-input").val();
-        sentNumber = $(".sent-message").length;
-        var date = new Date();
-        var message = new Message("onMessage", "Général", "TEST", "Simon", date);
-        sendText(message);
-        console.log(message);
+        let date = new Date();
+        let message = new Message("onMessage", "Général", "TEST", "Simon", date);
+
         Topic.publish(message);
-
-        jQuery("<div></div>", {
-            id: sentNumber,
-            class: "sent-message",
-        }).appendTo("#chat-area");
-
-        jQuery("<div></div>").appendTo("#" + sentNumber);
-
-        jQuery("<div></div>", {
-            id: "sent-inner-text",
-            text: inputMessage,
-        }).appendTo("#" + sentNumber);
-
-        jQuery("<div></div>", {
-            id: "sent-date",
-            text: date,
-        }).appendTo("#" + sentNumber);
-
         $("#text-input").val("");
     });
 
@@ -97,10 +75,28 @@ function sendMessage() {
             $('#send-button').click();
         }
     });
+}
 
-    //scrollTop = $("#chat-area").get(0).scrollHeight;
-        }
+function showMessage() {
+    inputMessage = $("#text-input").val();
+    sentNumber = $(".sent-message").length;
 
-function joinChannel() {
+    jQuery("<div></div>", {
+        id: sentNumber,
+        class: "sent-message",
+    }).appendTo("#chat-area");
 
+    jQuery("<div></div>").appendTo("#" + sentNumber);
+
+    jQuery("<div></div>", {
+        id: "sent-inner-text",
+        text: inputMessage,
+    }).appendTo("#" + sentNumber);
+
+    jQuery("<div></div>", {
+        id: "sent-date",
+        text: date,
+    }).appendTo("#" + sentNumber);
+
+    scrollTop = $("#chat-area").get(0).scrollHeight;
 }
