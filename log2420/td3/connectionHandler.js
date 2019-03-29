@@ -12,7 +12,6 @@ socket.onopen = function() {
 
 function sendText(message) {
   console.log("readystate = " + socket.readyState);
-  console.log("readystate = " + socket.readyState);
   if(socket.readyState === 1) {
     console.log("SEND TEXT");
     socket.send(JSON.stringify(message));
