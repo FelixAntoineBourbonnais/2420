@@ -9,14 +9,14 @@ DEBUG:
 -Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
 */
 
-var socket = new WebSocket("ws://localhost:3000");
+// var socket = new WebSocket("ws://localhost:3000");
 
 /*Topic = {
     publish: callbacks.fire,
     subscribe: callbacks.add,
     unsubscribe: callbacks.remove
 }*/
-
+/*
 function togglePlusMinus() {
     document.getElementById("channel-icon").classList.toggle("color-plus");
     document.getElementById("channel-icon").classList.toggle("fa-plus");

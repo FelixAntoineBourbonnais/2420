@@ -74,7 +74,7 @@
   
   #chat-area {
     padding: 30px;
-    overflow: auto;
+    overflow: auto; 
   }
 
   #chat-area > .sent-message, .received-message{
@@ -83,6 +83,8 @@
 
   .sent-message {
     float: right;
+    display: flex;
+    flex-direction: row;
   }
 
   .received-message > * {
