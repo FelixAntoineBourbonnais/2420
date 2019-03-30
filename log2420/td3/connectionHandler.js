@@ -2,10 +2,10 @@
 socket.onmessage = function (event) {
     let msg = JSON.parse(event.data);
     console.log(msg);
+    let date = new Date();
     switch (msg.eventType) {
         case "onMessage":
             console.log("onMessage");
-            let date = new Date();
             showMessage(msg, date);
             break;
         case "onCreateChannel":
@@ -13,16 +13,18 @@ socket.onmessage = function (event) {
             break;
         case "onJoinChannel":
             console.log("onJoinChannel");
+            showJoinChannel(msg, date);
             break;
         case "onLeaveChannel":
             console.log("onLeaveChannel");
+            showLeaveChannel(msg, date);
             break;
         case "updateChannelsList":
             console.log("updateChannelsList");
             break;
         case "onError":
             console.log("onError");
-            handleError(msg);
+            showError(msg, date);
             break;
     }
 }
