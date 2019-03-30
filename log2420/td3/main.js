@@ -102,52 +102,123 @@ function sendMessage() {
     });
 }
 
-function showMessage(msg) {
+function showMessage(msg, date) {
     sentNumber = $(".sent-message").length;
+    receivedNumber = $(".received-message").length;
+    formatedDate = formatDate(date);
 
     if (msg.sender === user) {
 
+        id = "sent" + sentNumber;
+
         jQuery("<div></div>", {
-            id: sentNumber,
+            id: id,
             class: "sent-message",
         }).appendTo("#chat-area");
 
-        jQuery("<div></div>").appendTo("#" + sentNumber);
+        jQuery("<div></div>").appendTo("#" + id);
 
         jQuery("<div></div>", {
             id: "sent-inner-text",
             text: msg.data,
-        }).appendTo("#" + sentNumber);
+        }).appendTo("#" + id);
 
         jQuery("<div></div>", {
             id: "sent-date",
-            text: msg.timestamp,
-        }).appendTo("#" + sentNumber);
+            text: formatedDate,
+        }).appendTo("#" + id);
 
     } else {
 
+        id = "received" + sentNumber;
+        
         jQuery("<div></div>", {
-            id: sentNumber,
+            id: id,
             class: "received-message",
         }).appendTo("#chat-area");
 
         jQuery("<div></div>", {
             id: "received-name",
             text: msg.sender,
-        }).appendTo("#" + sentNumber);
+        }).appendTo("#" + id);
 
         jQuery("<div></div>", {
             id: "received-inner-text",
             text: msg.data,
-        }).appendTo("#" + sentNumber);
+        }).appendTo("#" + id);
 
         jQuery("<div></div>", {
             id: "received-date",
-            text: msg.timestamp,
-        }).appendTo("#" + sentNumber);
+            text: formatedDate,
+        }).appendTo("#" + id);
 
     }
     $("#chat-area").scrollTop( $("#chat-area").prop('scrollHeight') );
+}
+
+function formatDate(date) {
+    switch(date.getDay()) {
+        case 0:
+            day = "DIM";
+            break;
+        case 1:
+            day = "LUN";
+            break;
+        case 2:
+            day = "MAR";
+            break;
+        case 3:
+            day = "MER";
+            break;   
+        case 4:
+            day = "JEU";
+            break;
+        case 5:
+            day = "VEN";
+            break;
+        case 6:
+            day = "SAM";
+            break;  
+    }
+    dateMonth = date.getDate();
+    hours = date.getHours();
+    minutes = date.getMinutes();
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
+    return day + " " + dateMonth + ", " + hours + ":" + minutes;
+    // dayWeek = date.substr(10, 1);
+    /*switch(date.substr(10, 1)) {
+        case "M":
+            dayWeek = "DIM";
+            break;
+        case "T":
+            dayWeek = "LUN";
+            break;
+        case 2:
+            dayWeek = "MAR";
+            break;
+        case 3:
+            dayWeek = "MER";
+            break;   
+        case 4:
+            dayWeek = "JEU";
+            break;
+        case 5:
+            dayWeek = "VEN";
+            break;
+        case 6:
+            dayWeek = "SAM";
+            break;  
+    }
+
+    dayMonth = date.substr(8, 2);
+    console.log(dayMonth);
+
+    hour = date.substr(11, 5);
+    console.log(hour);*/
 }
 
 function handleError(msg) {

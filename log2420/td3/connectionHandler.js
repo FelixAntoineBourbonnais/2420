@@ -5,7 +5,8 @@ socket.onmessage = function (event) {
     switch (msg.eventType) {
         case "onMessage":
             console.log("onMessage");
-            showMessage(msg);
+            let date = new Date();
+            showMessage(msg, date);
             break;
         case "onCreateChannel":
             console.log("onCreateChannel");
