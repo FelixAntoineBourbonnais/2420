@@ -9,6 +9,7 @@ DEBUG:
 -Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
 */
 
+
 usernameVerification = true;
 
 while (usernameVerification) {
@@ -85,11 +86,13 @@ function newGroup() {
 function sendMessage() {
     $("#send-button").click(function () {
         inputMessage = $("#text-input").val();
-        let date = new Date();
-        let message = new Message("onMessage", "dbf646dc-5006-4d9f-8815-fd37514818ee", inputMessage, user, date);
-        Topic.publish(message);
+        if (inputMessage.length !== 0) {
+            let date = new Date();
+            let message = new Message("onMessage", "dbf646dc-5006-4d9f-8815-fd37514818ee", inputMessage, user, date);
+            Topic.publish(message);
 
-        $("#text-input").val("");
+            $("#text-input").val("");
+        }
     });
 
     $("#text-input").keypress(function (e) {
@@ -101,6 +104,7 @@ function sendMessage() {
 
 function showMessage(msg) {
     sentNumber = $(".sent-message").length;
+
     if (msg.sender === user) {
 
         jQuery("<div></div>", {
@@ -143,8 +147,7 @@ function showMessage(msg) {
         }).appendTo("#" + sentNumber);
 
     }
-
-    scrollTop = $("#chat-area").get(0).scrollHeight;
+    $("#chat-area").scrollTop( $("#chat-area").prop('scrollHeight') );
 }
 
 function handleError(msg) {

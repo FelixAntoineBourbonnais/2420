@@ -1,6 +1,6 @@
 
 function sendText(message) {
     if (socket.readyState === 1) {
-        socket.send((message));
+        socket.send(JSON.stringify(message));
     }
 }
