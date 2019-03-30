@@ -20,7 +20,8 @@
         <div id="icons">
             <i></i>
             <i class="far fa-user">
-                <br><div id="username">Simon</div>
+                <br>
+                <div id="username">Simon</div>
             </i>
             <i class="fas fa-bell"></i>
             <i class="fas fa-globe"></i>
@@ -53,14 +54,22 @@
                     <div id="received-date">LUN 12, 04:12</div>
                 </div>
                 <div class="sent-message">
-                    <div></div>
                     <div id="sent-inner-text">dssd</div>
                     <div id="sent-date">LUN 12, 04:12</div>
+                </div>
+                <div class="sent-message">
+                    <div id="sent-inner-text">dssddssddssddssddssddssddssddssddssddssddssd</div>
+                    <div id="sent-date">LUN 12, 04:12</div>
+                </div>
+                <div class="received-message">
+                    <div id="received-name">JoJo</div>
+                    <div id="received-inner-text">dsadsadsa</div>
+                    <div id="received-date">LUN 12, 04:12</div>
                 </div>
             </div>
             <div id="text-area">
                 <i class="far fa-thumbs-up"></i>
-                <input type="text" id="text-input" value=""  autofocus>
+                <input type="text" id="text-input" value="" autofocus>
                 <button type="submit" id="send-button">Envoyer</button>
             </div>
         </div>
@@ -72,8 +81,8 @@
                     <span id="group-text-default">défaut</span>
                 </div>
             </div>
-            <div class="group dark">
-                <i class="fas fa-plus color-plus channel-icon"></i>
+            <div class="group dark" data-type="template">
+                <i id="allo" class="fas fa-plus color-plus channel-icon"></i>
                 <div id="group-name">Channel 1</div>
                 <div></div>
             </div>

@@ -1,30 +1,12 @@
 
-var socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + "Simon");
-
-//var socket = new WebSocket("ws://localhost:3000");
-
-socket.onopen = function() {
-    // let date = new Date();
-    // let message = new Message("onMessage", 1, "CONTENT OF THE MESSAGE", "Noboru", date);
-    // console.log("test");
-    // sendText(message);
-}
-
-function sendText(message) {
-    console.log("readystate = " + socket.readyState);
-    if(socket.readyState === 1) {
-        socket.send(JSON.stringify(message));
-    }
-}
-
-socket.onmessage = function(event) {
-    console.log(event);
+socket.onmessage = function (event) {
     let msg = JSON.parse(event.data);
     console.log(msg);
-    switch(msg.eventType) {
+    switch (msg.eventType) {
         case "onMessage":
             console.log("onMessage");
-            //showMessage();
+            let date = new Date();
+            showMessage(msg, date);
             break;
         case "onCreateChannel":
             console.log("onCreateChannel");
@@ -40,11 +22,7 @@ socket.onmessage = function(event) {
             break;
         case "onError":
             console.log("onError");
+            handleError(msg);
             break;
     }
-}
-
-socket.onerror = function(event) {
-    let msg = JSON.parse(event.data);
-    console.log(msg);
 }

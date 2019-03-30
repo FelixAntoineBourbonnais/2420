@@ -1,7 +1,6 @@
-/*function sendText(message) {
-    console.log(message); 
-    socket.onopen = function(event) {
-        console.log(message);
-        socket.send(message);
+
+function sendText(message) {
+    if (socket.readyState === 1) {
+        socket.send(JSON.stringify(message));
     }
-}*/
+}
