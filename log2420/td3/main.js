@@ -8,9 +8,8 @@ TODO:
 DEBUG:
 -Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
 */
-var socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=Simon");
-
 var callbacks = jQuery.Callbacks()
+
 Topic = {
     publish: callbacks.fire,
     subscribe: callbacks.add,
@@ -24,7 +23,6 @@ $(document).ready(function () {
     sendMessage();
 });
 
-
 function togglePlusMinus() {
     $(".group").on("click", ".channel-icon", function () {
         $(".channel-icon").toggleClass("color-plus color-minus");
@@ -33,7 +31,6 @@ function togglePlusMinus() {
 }
 
 function newGroup() {
-
     $("#new-group").click(function () {
         let groupName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
 
@@ -64,7 +61,8 @@ function newGroup() {
 function sendMessage() {
     $("#send-button").click(function () {
         let date = new Date();
-        let message = new Message("onMessage", "Général", "TEST", "Simon", date);
+        let message = new Message("onMessage", "dbf646dc-5006-4d9f-8815-fd37514818ee", "TEST", "Simon", date);
+        sendText(message);
 
         Topic.publish(message);
         $("#text-input").val("");
