@@ -94,6 +94,36 @@
     word-wrap: break-word;
   }
 
+  #received-inner-text-error {
+    padding: 15px;
+    background-color: rgb(209, 75, 75);
+    border-radius: 100px;
+    text-align: left;
+    width: 350px;
+    word-wrap: break-word;
+    color: rgb(53, 2, 2);
+  }
+
+  #received-inner-text-join {
+    padding: 15px;
+    background-color: rgb(147, 233, 130);
+    border-radius: 100px;
+    text-align: left;
+    width: 350px;
+    word-wrap: break-word;
+    color: rgb(2, 41, 5);
+  }
+
+  #received-inner-text-leave {
+    padding: 15px;
+    background-color: rgb(195, 197, 207);
+    border-radius: 100px;
+    text-align: left;
+    width: 350px;
+    word-wrap: break-word;
+    color: rgb(85, 85, 85);
+  }
+
   #received-name{
     color: rgb(117, 143, 153);
   }
