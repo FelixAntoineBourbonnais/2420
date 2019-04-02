@@ -9,7 +9,6 @@ DEBUG:
 -Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
 */
 
-
 usernameVerification = true;
 
 while (usernameVerification) {
@@ -26,8 +25,6 @@ while (usernameVerification) {
 }
 
 let socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
-
-socket.onopen = function () { }
 
 let callbacks = jQuery.Callbacks()
 Topic = {
@@ -90,6 +87,7 @@ function sendMessage() {
             let date = new Date();
             let message = new Message("onMessage", "dbf646dc-5006-4d9f-8815-fd37514818ee", inputMessage, user, date);
             Topic.publish(message);
+            // observable.notifyObservers
 
             $("#text-input").val("");
         }
@@ -248,56 +246,6 @@ function showError(msg, date) {
     }).appendTo("#" + id);
 }
 
-function showJoinChannel(msg, date) {
-    receivedNumber = $(".received-message").length;
-    formatedDate = formatDate(date);
-
-    id = "received" + receivedNumber;
-
-    jQuery("<div></div>", {
-        id: id,
-        class: "received-message",
-    }).appendTo("#chat-area");
-
-    jQuery("<div></div>", {
-        id: "received-name",
-        text: "Admin",
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-inner-text-join",
-        text: msg.data,
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-date",
-        text: formatedDate,
-    }).appendTo("#" + id);
-}
-
-function showLeaveChannel(msg, date) {
-    receivedNumber = $(".received-message").length;
-    formatedDate = formatDate(date);
-
-    id = "received" + receivedNumber;
-
-    jQuery("<div></div>", {
-        id: id,
-        class: "received-message",
-    }).appendTo("#chat-area");
-
-    jQuery("<div></div>", {
-        id: "received-name",
-        text: "Admin",
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-inner-text-leave",
-        text: msg.data,
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-date",
-        text: formatedDate,
-    }).appendTo("#" + id);
+function joinChannel(channelId) {
+    channelId
 }

@@ -1,4 +1,6 @@
 
+socket.onopen = function () {}
+
 socket.onmessage = function (event) {
     let msg = JSON.parse(event.data);
     console.log(msg);
@@ -13,7 +15,7 @@ socket.onmessage = function (event) {
             break;
         case "onJoinChannel":
             console.log("onJoinChannel");
-            showJoinChannel(msg, date);
+            joinChannel();
             break;
         case "onLeaveChannel":
             console.log("onLeaveChannel");
