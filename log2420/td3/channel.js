@@ -22,4 +22,8 @@ class Channel {
         this.messages = messages;
         this.numberOfUsers = numberOfUsers;
     }
+
+
+
+
 }
