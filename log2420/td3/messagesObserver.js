@@ -24,7 +24,7 @@ function sendMessage() {
         if (inputMessage.length !== 0) {
             let date = new Date();
             let message = new Message("onMessage", currentChannelId, inputMessage, user, date);
-            socket.send(message);
+            socket.send(JSON.stringify(message));
 
             $("#text-input").val("");
         }

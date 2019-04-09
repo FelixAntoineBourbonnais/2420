@@ -23,7 +23,7 @@ socket.onmessage = function (event) {
         case "onError":
             console.log("onError: " + msg);
             console.log("onError");
-            showError(msg, date);
+            showMessage(msg, date, true);
             break;
     }
 }
