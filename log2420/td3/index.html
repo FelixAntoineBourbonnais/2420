@@ -1,5 +1,6 @@
 <head>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
         crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,7 +23,7 @@
             <i></i>
             <i class="far fa-user">
                 <br>
-                <div id="username">Simon</div>
+                <div id="username"></div>
             </i>
             <i class="fas fa-bell"></i>
             <i class="fas fa-globe"></i>
@@ -33,14 +34,14 @@
     <div id="descriptive">
         <div id="active-group-header">
             <span class="smaller-text">Groupe actif:</span>
-            <span class="bigger-text">Général</span>
+            <span id="current-channel" class="bigger-text"></span>
         </div>
         <div id="group-list-header">
             <span class="smaller-text">Liste des groupes:</span>
             <span></span>
             <span class="bigger-text">Groupes disponibles</span>
             <span id="list-options">
-                <i id="new-group" class="fas fa-plus"></i>
+                <i id="new-group" class="fas fa-plus" onclick="requestAddNewChannel()"></i>
                 <i class="fas fa-cogs"></i>
             </span>
         </div>

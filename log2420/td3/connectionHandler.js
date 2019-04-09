@@ -13,6 +13,7 @@ socket.onmessage = function (event) {
             break;
         case "onCreateChannel":
             console.log("onCreateChannel");
+            addNewChannel(msg);
             break;
         case "onJoinChannel":
             showJoinChannel(msg, date);
@@ -23,9 +24,10 @@ socket.onmessage = function (event) {
             break;
         case "updateChannelsList":
             console.log("updateChannelsList");
-            updateChannelsList(msg);
+            initialization(msg);
             break;
         case "onError":
+            console.log("onError: " + msg);
             console.log("onError");
             showError(msg, date);
             break;
