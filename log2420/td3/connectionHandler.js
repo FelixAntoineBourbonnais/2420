@@ -13,12 +13,17 @@ socket.onmessage = function (event) {
             // loadMessages(msg.channelId);
             break;
         case "onCreateChannel":
+            console.log("onCreateChannel");
+            addNewChannel(msg);
             break;
         case "updateChannelsList":
-            updateChannelsList(msg);
+            console.log("updateChannelsList");
+            initialization(msg);
             break;
         case "onError":
-            showMessage(msg, date, true);
+            console.log("onError: " + msg);
+            console.log("onError");
+            showError(msg, date);
             break;
     }
 }

@@ -6,12 +6,12 @@ function updateChannelsList(message) {
   retrieveChannelList(message);
 
   let channelsListDOM = document.getElementById("channels-list");
-  console.log(channelsListDOM);
   channelsListDOM.innerHTML = "";
   
   for (const channel in channelsList) {
     let darkness = (channel % 2 === 0) ? "dark" : "light";
     channelsListDOM.innerHTML += setChannelDOM(channelsList[channel].name, channelsList[channel].id, darkness);
+    console.log(channelsList[channel].name);
   }
 
   setPlusMinusIcon();
@@ -34,9 +34,9 @@ function setChannelDOM(channelName, channelId, darkness) {
     htmlBlock += "<div class='group " + darkness + "' onclick=";
     htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">";
     htmlBlock += "<i id='star' class='fas fa-star'></i>";
-    htmlBlock += "<div id='group-name'>Général</div>";
+    htmlBlock += "<div id='group-name'>" + channelName + "</div>";
     htmlBlock += "<div id='group-default'>";
-    htmlBlock += "<span id='group-text-default'>défaut</span>";
+    htmlBlock += "<span id='group-text-default'>default</span>";
     htmlBlock += "</div></div>";
   } else {
     htmlBlock += "<div class='group " + darkness + "' onclick=";
@@ -56,42 +56,30 @@ function setPlusMinusIcon() {
 
   for (i = 1; i < channelsList.length; i++) {
     if (channelsList[i].joinStatus) {
-      console.log(channelsList[i].joinStatus);
+      let onClickAttribute = "leaveChannel('" + channelsList[i].id + "')";
       icons[i-1].className = "plus-minus-icon fas fa-minus color-minus channel-icon";
-    } else {
-      icons[i-1].className = "plus-minus-icon fas fa-plus color-plus channel-icon";
-    } 
-  }
-}
-
-/*function joinChannel(message) {
-  const icons = document.querySelectorAll(".plus-minus-icon");
-  console.log(message);
-  for (i = 0; i < message.data.length(); ++i) {
-    if (message.data[i].joinStatus = true) {
-      for (const icon of icons) {
-        icon.className = "fas fa-minus color-minus channel-icon"
-      } 
-    } else {
-      for (const icon of icons) {
-        icon.className = "fas fa-plus color-plus channel-icon"
-      } 
+      icons[i-1].setAttribute("onclick", onClickAttribute);
     }
   }
-}*/
-
-/*function joinOrLeaveChannel(channel) {
-
 }
 
+function requestAddNewChannel() {
+  let channelName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
+  let channelId = generateChannelId();
+  for (i = 0; ; i++) {
+    if (channelsList[i].id === channelId) {
+      channelId = generateChannelId();
+    } else {
+      break;
+    }
+  }
+  let newChannel = new Channel(channelId, channelName, false, null, 0);
+  let date = new Date();
+  let message = new Message("onCreateChannel", channelsList[0].id, newChannel, user, date);
+  sendText(message);
+  console.log("newChannel");
+}
 
-function joinOrLeaveChannel(channel) {
-  console.log("join or leave");
-  $("#allo").click(function () {
-      if ($(this).hasClass("color-plus") && $(this).hasClass("fa-plus")) {
-          joinChannel(channel);
-          console.log("join");
-      } else
-      leaveChannel(channel);
-  });
-}*/
+function addNewChannel(message) {
+  console.log(message);
+}

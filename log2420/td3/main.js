@@ -28,40 +28,17 @@ while (usernameVerification) {
 
 let socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 
+function initialization(message) {
+    updateChannelsList(message);
+
+    document.getElementById("username").innerText = user;
+    document.getElementById("current-channel").innerText = getChannelNameFromId(currentChannelId);
+}
+
 $(document).ready(function () {
-    $("#received-date").text(formatDate(new Date()));
-    $("#username").text(user);
-    newGroup();
     sendMessage();
 });
 
-function newGroup() {
-    $("#new-group").click(function () {
-        let groupName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
-
-        groupNumber = $(".group").length;
-        backgroundColor = "group light";
-
-        if (groupNumber % 2)
-            backgroundColor = "group dark";
-
-        jQuery("<div></div>", {
-            id: groupNumber,
-            class: backgroundColor,
-        }).appendTo("#group-list");
-
-        jQuery("<i></i>", {
-            class: "fas fa-plus color-plus channel-icon",
-        }).appendTo("#" + groupNumber);
-
-        jQuery("<div></div>", {
-            id: "group-name",
-            text: groupName,
-        }).appendTo("#" + groupNumber);
-
-        jQuery("<div></div>").appendTo("#" + groupNumber);
-    });
-}
 
 function formatDate(date) {
     switch (date.getDay()) {
@@ -107,6 +84,25 @@ function joinChannel(newChannelId) {
     let message = new Message("onJoinChannel", newChannelId, "changing channel", user, date);
     sendText(message);
     console.log("joinChannel");
-    setPlusMinusIcon();
 }
 
+
+function getChannelNameFromId(channelId) {
+    for (channel in channelsList) {
+        if (channelsList[channel].id === channelId) {
+            return channelsList[channel].name;
+        }
+    }
+    return;
+}
+
+function generateChannelId() {
+    Math.floor(Math.random()*90000) + 10000;
+    let firstPart = (Math.floor(Math.random()*90000000)+10000000).toString(36);
+    let secondPart = (Math.floor(Math.random()*9000)+1000).toString(36);
+    let thirdPart = (Math.floor(Math.random()*9000)+1000).toString(36);
+    let fourthPart = (Math.floor(Math.random()*9000)+1000).toString(36);
+    let fifthPart = (Math.floor(Math.random()*900000000000)+100000000000).toString(36);
+
+    return firstPart + "-" + secondPart + "-" + thirdPart + "-" + fourthPart + "-" + fifthPart;
+}
