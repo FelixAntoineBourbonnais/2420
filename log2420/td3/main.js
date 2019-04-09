@@ -150,3 +150,58 @@ function leaveChannel(oldChannelId) {
     sendText(message);
     console.log("leaveChannel");
 }
+
+function showJoinChannel(msg, date) {
+    console.log('gfgh');
+    receivedNumber = $(".received-message").length;
+    formatedDate = formatDate(date);
+
+    id = "received" + receivedNumber;
+
+    jQuery("<div></div>", {
+        id: id,
+        class: "received-message",
+    }).appendTo("#chat-area");
+
+    jQuery("<div></div>", {
+        id: "received-name",
+        text: "Admin",
+    }).appendTo("#" + id);
+
+    jQuery("<div></div>", {
+        id: "received-inner-text-join",
+        text: msg.data,
+    }).appendTo("#" + id);
+
+    jQuery("<div></div>", {
+        id: "received-date",
+        text: formatedDate,
+    }).appendTo("#" + id);
+}
+
+function showLeaveChannel(msg, date) {
+    receivedNumber = $(".received-message").length;
+    formatedDate = formatDate(date);
+
+    id = "received" + receivedNumber;
+
+    jQuery("<div></div>", {
+        id: id,
+        class: "received-message",
+    }).appendTo("#chat-area");
+
+    jQuery("<div></div>", {
+        id: "received-name",
+        text: "Admin",
+    }).appendTo("#" + id);
+
+    jQuery("<div></div>", {
+        id: "received-inner-text-leave",
+        text: msg.data,
+    }).appendTo("#" + id);
+
+    jQuery("<div></div>", {
+        id: "received-date",
+        text: formatedDate,
+    }).appendTo("#" + id);
+}

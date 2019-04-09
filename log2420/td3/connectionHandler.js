@@ -15,6 +15,7 @@ socket.onmessage = function (event) {
             console.log("onCreateChannel");
             break;
         case "onJoinChannel":
+            showJoinChannel(msg, date);
             break;
         case "onLeaveChannel":
             console.log("onLeaveChannel");
