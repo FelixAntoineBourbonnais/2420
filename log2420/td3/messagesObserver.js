@@ -1,4 +1,4 @@
-function showMessage(message, date, isError) {
+function showMessage(message, date) {
     chatArea = document.getElementById("chat-area");
     if (message.sender === user) {
         newSentMessage = "";
@@ -7,7 +7,7 @@ function showMessage(message, date, isError) {
         newSentMessage += "<div id='sent-date'>" + formatDate(date) + "</div></div>";
         chatArea.innerHTML += newSentMessage;
     } else {
-        messageData = getMessageId(message, isError);
+        messageData = getMessageId(message);
         newReceivedMessage = "";
         newReceivedMessage += "<div class='received-message'>";
         newReceivedMessage += "<div id='received-name'>" + message.sender + "</div>";
@@ -49,6 +49,8 @@ function getMessageId(message) {
             return "<div id='received-inner-text-join'>" + message.data + "</div>";
         } else if (message.data.includes("a quit")) {
             return "<div id='received-inner-text-leave'>" + message.data + "</div>";
+        } else if (message.data.includes("a quit")) {
+            return "<div id='received-inner-text-leave'>" + message.data + "</div>";
         }
     } else if (message.sender == null){
         message.sender = "Admin";
@@ -74,7 +76,7 @@ function loadMessages(channelId) {
     console.log(channel.messages)
     if (channel.messages !== null) {
         for (i = 0; i < channel.messages.length; ++i) {
-            showMessage(channel.messages[i], channel.messages[i].timestamp, false);
+            showMessage(channel.messages[i], channel.messages[i].timestamp);
         }
     }
 }

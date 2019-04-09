@@ -1,5 +1,5 @@
 socket.onopen = function () {
-    
+    initialization();
 }
 
 socket.onmessage = function (event) {
@@ -9,8 +9,8 @@ socket.onmessage = function (event) {
     switch (msg.eventType) {
         case "onMessage":
             AddMessageToChannel(msg, date);
-            showMessage(msg, date, false);
-            // loadMessages(msg.channelId);
+            showMessage(msg, date);
+            console.log(msg);
             break;
         case "onCreateChannel":
             console.log("onCreateChannel");
@@ -18,12 +18,10 @@ socket.onmessage = function (event) {
             break;
         case "updateChannelsList":
             console.log("updateChannelsList");
-            initialization(msg);
+            updateChannelsList(msg);
             break;
         case "onError":
-            console.log("onError: " + msg);
-            console.log("onError");
-            showMessage(msg, date, true);
+            showMessage(msg, date);
             break;
     }
 }
