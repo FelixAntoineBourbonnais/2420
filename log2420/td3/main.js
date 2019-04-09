@@ -1,14 +1,3 @@
-/*
-TODO: 
--Quand on click sur un channel, le nom du groupe actif change
--Quand on click sur un channel, on voit bien qu'il est sélectionné
--Channel par défaut est général, et on voit qu'il est sélectionné
--Le reste c'est des requetes au serveur
-
-DEBUG:
--Quand on create un groupe dynamiquement, le bouton peut pas executer sa fonction
-*/
-
 usernameVerification = true;
 
 while (usernameVerification) {
@@ -28,16 +17,16 @@ while (usernameVerification) {
 
 let socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 
-
-function initialization() { 
-    document.getElementById("username").innerText = user;
-}
-
 $(document).ready(function () {
+    document.getElementById("username").innerText = user;
     sendMessage();
 });
 
-
+/**
+ * Formats a given date
+ * @param  {Date} date
+ * @return {string} The formated date.
+ */
 function formatDate(date) {
     switch (date.getDay()) {
         case 0:
@@ -62,6 +51,7 @@ function formatDate(date) {
             day = "SAM";
             break;
     }
+
     dateMonth = date.getDate();
     hours = date.getHours();
     minutes = date.getMinutes();
@@ -76,21 +66,31 @@ function formatDate(date) {
 
     return day + " " + dateMonth + ", " + hours + ":" + minutes;
 }
-
+/**
+ * Sends an onJoinChannel Message to the server
+ * @param  {string} newChannelId
+ */
 function joinChannel(newChannelId) {
     let date = new Date();
     let message = new Message("onJoinChannel", newChannelId, "changing channel", user, date);
     sendText(message);
     console.log("joinChannel");
 }
-
+/**
+ * Sends an onLeaveChannel Message to the server
+ * @param  {string} oldChannelId
+ */
 function leaveChannel(oldChannelId) {
     let date = new Date();
     let message = new Message("onLeaveChannel", oldChannelId, "changing channel", user, date);
     sendText(message);
     console.log("leaveChannel");
 }
-
+/**
+ * Retreives channel name from local list
+ * @param  {string} channelId
+ * @return {string} The name of the channel.
+ */
 function getChannelNameFromId(channelId) {
     for (channel in channelsList) {
         if (channelsList[channel].id === channelId) {
