@@ -86,6 +86,12 @@ function joinChannel(newChannelId) {
     console.log("joinChannel");
 }
 
+function leaveChannel(oldChannelId) {
+    let date = new Date();
+    let message = new Message("onLeaveChannel", oldChannelId, "changing channel", user, date);
+    sendText(message);
+    console.log("leaveChannel");
+}
 
 function getChannelNameFromId(channelId) {
     for (channel in channelsList) {

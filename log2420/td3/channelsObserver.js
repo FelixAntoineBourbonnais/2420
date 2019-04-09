@@ -22,14 +22,16 @@ function retrieveChannelList(message) {
     if (!channelsIdList.includes(message.data[i].id)) {
       channelsIdList.push(message.data[i].id);
       channelsList.push(message.data[i]);
+    } else {
+      channelsList[i].joinStatus = message.data[i].joinStatus;
+      channelsList[i].numberOfUsers = message.data[i].numberOfUsers;
     }
   }
-  console.log(channelsList);
 }
 
 function setChannelDOM(channelName, channelId, darkness) {
   htmlBlock = "";
-  if (channelName === "Général") {
+  if (channelId === "dbf646dc-5006-4d9f-8815-fd37514818ee") {
     currentChannelId = channelId;
     htmlBlock += "<div class='group " + darkness + "' onclick=";
     htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">";
@@ -55,6 +57,7 @@ function setPlusMinusIcon() {
   const icons = document.getElementsByClassName("plus-minus-icon");
 
   for (i = 1; i < channelsList.length; i++) {
+    console.log(channelsList);
     if (channelsList[i].joinStatus) {
       let onClickAttribute = "leaveChannel('" + channelsList[i].id + "')";
       icons[i-1].className = "plus-minus-icon fas fa-minus color-minus channel-icon";
