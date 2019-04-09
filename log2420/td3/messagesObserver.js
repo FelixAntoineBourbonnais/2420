@@ -1,3 +1,8 @@
+/**
+ * Shows the new message to the screen
+ * @param  {} message - Data from the event received from server
+ * @param  {Date} date
+ */
 function showMessage(message, date) {
     chatArea = document.getElementById("chat-area");
     if (message.sender === user) {
@@ -18,6 +23,9 @@ function showMessage(message, date) {
     chatArea.scrollTop = chatArea.scrollHeight;
 }
 
+/**
+ * Sends an onMessage type of Message to the server
+ */
 function sendMessage() {
     $("#send-button").click(function () {
         inputMessage = $("#text-input").val();
@@ -37,12 +45,21 @@ function sendMessage() {
     });
 }
 
+/**
+ * Sends a given Message to the server
+ * @param  {Message} message - Message from joinChannel or leaveChannel
+ */
 function sendText(message) {
     if (socket.readyState === 1) {
         socket.send(JSON.stringify(message));
     }
 }
 
+/**
+ * Retreives the correct div type to show on screen, depending on the message type
+ * @param  {Message} message
+ * @return {string} The div to show on screen.
+ */
 function getMessageId(message) {
     if (message.sender === "Admin") {
         if (message.data.includes("a rejoint le groupe")) {
@@ -60,6 +77,11 @@ function getMessageId(message) {
     }
 }
 
+/**
+ * Adds a Message to a channel in a local Array
+ * @param  {Message} msg
+ * @param  {Date} date
+ */
 function addMessageToChannel(msg, date) {
     channel = findChannel(msg.channelId);
     if (channel.messages === null)
@@ -68,6 +90,10 @@ function addMessageToChannel(msg, date) {
     channel.messages.push(msg);
 }
 
+/**
+ * Loads all the messages of a channel on screen
+ * @param  {string} channelId
+ */
 function loadMessages(channelId) {
     channel = findChannel(channelId);
     document.getElementById('chat-area').innerText = "";
@@ -79,6 +105,11 @@ function loadMessages(channelId) {
     }
 }
 
+/**
+ * Retreives a channel from a local channel list
+ * @param  {string} channelId
+ * @return {Channel} The channel.
+ */
 function findChannel(channelId) {
     for (i = 0; i < channelsList.length; ++i) {
         if (channelsList[i].id === channelId)

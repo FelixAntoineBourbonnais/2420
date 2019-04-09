@@ -1,7 +1,12 @@
-socket.onopen = function () {
-    initialization();
-}
+/**
+ * Opens web socket
+ */
+socket.onopen = function () {}
 
+/**
+ * Redirects the event received, depending on its type
+ * @param  {Event} event - An event from the server
+ */
 socket.onmessage = function (event) {
     let msg = JSON.parse(event.data);
     console.log(msg);

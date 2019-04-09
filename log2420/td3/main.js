@@ -66,6 +66,7 @@ function formatDate(date) {
 
     return day + " " + dateMonth + ", " + hours + ":" + minutes;
 }
+
 /**
  * Sends an onJoinChannel Message to the server
  * @param  {string} newChannelId
@@ -76,6 +77,7 @@ function joinChannel(newChannelId) {
     sendText(message);
     console.log("joinChannel");
 }
+
 /**
  * Sends an onLeaveChannel Message to the server
  * @param  {string} oldChannelId
@@ -86,6 +88,7 @@ function leaveChannel(oldChannelId) {
     sendText(message);
     console.log("leaveChannel");
 }
+
 /**
  * Retreives channel name from local list
  * @param  {string} channelId
@@ -100,6 +103,10 @@ function getChannelNameFromId(channelId) {
     return;
 }
 
+/**
+ * Generates a ranom channel id
+ * @return {string} A random id of format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+ */
 function generateChannelId() {
     Math.floor(Math.random()*90000) + 10000;
     let firstPart = (Math.floor(Math.random()*90000000)+10000000).toString(36);
