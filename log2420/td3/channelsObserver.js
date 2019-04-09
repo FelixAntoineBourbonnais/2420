@@ -1,4 +1,5 @@
 var channelsList = [];
+var channelsIdList = [];
 var currentChannelId = "";
 
 function updateChannelsList(message) {
@@ -17,24 +18,29 @@ function updateChannelsList(message) {
 }
 
 function retrieveChannelList(message) {
-    channelsList = message.data;
-    for (i = 0; i < channelsList.length; ++i) {
-        if (channelsList[i].joinStatus === true)
-            currentChannelId = channelsList[i].id;
+  for (i = 0; i < message.data.length; ++i) {
+    if (!channelsIdList.includes(message.data[i].id)) {
+      channelsIdList.push(message.data[i].id);
+      channelsList.push(message.data[i]);
     }
+  }
+  console.log(channelsList);
 }
 
 function setChannelDOM(channelName, channelId, darkness) {
   htmlBlock = "";
   if (channelName === "Général") {
-    htmlBlock += "<div class='group " + darkness + "'>";
+    currentChannelId = channelId;
+    htmlBlock += "<div class='group " + darkness + "' onclick=";
+    htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">";
     htmlBlock += "<i id='star' class='fas fa-star'></i>";
     htmlBlock += "<div id='group-name'>Général</div>";
     htmlBlock += "<div id='group-default'>";
     htmlBlock += "<span id='group-text-default'>défaut</span>";
     htmlBlock += "</div></div>";
   } else {
-    htmlBlock += "<div class='group " + darkness + "'>";
+    htmlBlock += "<div class='group " + darkness + "' onclick=";
+    htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">";
     htmlBlock += "<i class='plus-minus-icon fas fa-plus color-plus channel-icon' onclick=";
     htmlBlock += "\"joinChannel(" + "'" + channelId + "'" + ")\"></i>";
     htmlBlock += "<div id='group-name'>" + channelName + "</div>";

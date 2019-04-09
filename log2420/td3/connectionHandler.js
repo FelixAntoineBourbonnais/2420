@@ -8,26 +8,17 @@ socket.onmessage = function (event) {
     let date = new Date();
     switch (msg.eventType) {
         case "onMessage":
-            console.log("onMessage");
-            showMessage(msg, date);
+            AddMessageToChannel(msg, date);
+            showMessage(msg, date, false);
+            // loadMessages(msg.channelId);
             break;
         case "onCreateChannel":
-            console.log("onCreateChannel");
-            break;
-        case "onJoinChannel":
-            showJoinChannel(msg, date);
-            break;
-        case "onLeaveChannel":
-            console.log("onLeaveChannel");
-            showLeaveChannel(msg, date);
             break;
         case "updateChannelsList":
-            console.log("updateChannelsList");
             updateChannelsList(msg);
             break;
         case "onError":
-            console.log("onError");
-            showError(msg, date);
+            showMessage(msg, date, true);
             break;
     }
 }

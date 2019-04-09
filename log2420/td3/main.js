@@ -17,6 +17,8 @@ while (usernameVerification) {
     if (answer != null) {
         if (answer.length > 13 || answer.length < 3) {
             alert("Veuiller entrer un nom d'utilisateur entre 3 et 13 caractères!");
+        } else if (answer == "Admin") { 
+            alert("Le nom Admin est prohibe")
         } else {
             user = answer;
             usernameVerification = false;
@@ -27,16 +29,11 @@ while (usernameVerification) {
 let socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?username=" + user);
 
 $(document).ready(function () {
+    $("#received-date").text(formatDate(new Date()));
     $("#username").text(user);
-    togglePlusMinus();
     newGroup();
     sendMessage();
 });
-
-function togglePlusMinus() {
-        $().toggleClass("color-plus color-minus");
-        $().toggleClass("fa-plus fa-minus");
-}
 
 function newGroup() {
     $("#new-group").click(function () {
@@ -63,10 +60,6 @@ function newGroup() {
         }).appendTo("#" + groupNumber);
 
         jQuery("<div></div>").appendTo("#" + groupNumber);
-        /* let tempNode = document.querySelector("div[data-type='template']").cloneNode(true);
-         console.log(tempNode);
-         
-         $("#group-list").append(tempNode);*/
     });
 }
 
@@ -109,33 +102,6 @@ function formatDate(date) {
     return day + " " + dateMonth + ", " + hours + ":" + minutes;
 }
 
-function showError(msg, date) {
-    receivedNumber = $(".received-message").length;
-    formatedDate = formatDate(date);
-
-    id = "received" + receivedNumber;
-
-    jQuery("<div></div>", {
-        id: id,
-        class: "received-message",
-    }).appendTo("#chat-area");
-
-    jQuery("<div></div>", {
-        id: "received-name",
-        text: "Admin",
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-inner-text-error",
-        text: msg.data + "!",
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-date",
-        text: formatedDate,
-    }).appendTo("#" + id);
-}
-
 function joinChannel(newChannelId) {
     let date = new Date();
     let message = new Message("onJoinChannel", newChannelId, "changing channel", user, date);
@@ -144,64 +110,3 @@ function joinChannel(newChannelId) {
     setPlusMinusIcon();
 }
 
-function leaveChannel(oldChannelId) {
-    let date = new Date();
-    let message = new Message("onLeaveChannel", oldChannelId, "changing channel", user, date);
-    sendText(message);
-    console.log("leaveChannel");
-}
-
-function showJoinChannel(msg, date) {
-    console.log('gfgh');
-    receivedNumber = $(".received-message").length;
-    formatedDate = formatDate(date);
-
-    id = "received" + receivedNumber;
-
-    jQuery("<div></div>", {
-        id: id,
-        class: "received-message",
-    }).appendTo("#chat-area");
-
-    jQuery("<div></div>", {
-        id: "received-name",
-        text: "Admin",
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-inner-text-join",
-        text: msg.data,
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-date",
-        text: formatedDate,
-    }).appendTo("#" + id);
-}
-
-function showLeaveChannel(msg, date) {
-    receivedNumber = $(".received-message").length;
-    formatedDate = formatDate(date);
-
-    id = "received" + receivedNumber;
-
-    jQuery("<div></div>", {
-        id: id,
-        class: "received-message",
-    }).appendTo("#chat-area");
-
-    jQuery("<div></div>", {
-        id: "received-name",
-        text: "Admin",
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-inner-text-leave",
-        text: msg.data,
-    }).appendTo("#" + id);
-
-    jQuery("<div></div>", {
-        id: "received-date",
-        text: formatedDate,
-    }).appendTo("#" + id);
-}
