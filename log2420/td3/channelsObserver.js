@@ -29,7 +29,7 @@ function retrieveChannelList(message) {
 
 function setChannelDOM(channelName, channelId, darkness) {
   htmlBlock = "";
-  if (channelName === "Général") {
+  if (channelId === "dbf646dc-5006-4d9f-8815-fd37514818ee") {
     currentChannelId = channelId;
     htmlBlock += "<div class='group " + darkness + "' onclick=";
     htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">";
