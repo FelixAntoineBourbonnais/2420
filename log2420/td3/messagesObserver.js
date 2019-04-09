@@ -60,9 +60,8 @@ function getMessageId(message) {
     }
 }
 
-function AddMessageToChannel(msg, date) {
+function addMessageToChannel(msg, date) {
     channel = findChannel(msg.channelId);
-    console.log(channel);
     if (channel.messages === null)
         channel.messages = Array();
     msg.timestamp = date;
@@ -73,7 +72,6 @@ function loadMessages(channelId) {
     channel = findChannel(channelId);
     document.getElementById('chat-area').innerText = "";
     currentChannelId = channelId;
-    console.log(channel.messages)
     if (channel.messages !== null) {
         for (i = 0; i < channel.messages.length; ++i) {
             showMessage(channel.messages[i], channel.messages[i].timestamp);

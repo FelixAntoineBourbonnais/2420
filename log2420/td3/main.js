@@ -31,7 +31,6 @@ let socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?usern
 
 function initialization() { 
     document.getElementById("username").innerText = user;
-    document.getElementById("current-channel").innerText = getChannelNameFromId(currentChannelId);
 }
 
 $(document).ready(function () {

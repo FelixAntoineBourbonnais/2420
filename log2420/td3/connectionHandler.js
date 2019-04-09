@@ -8,7 +8,7 @@ socket.onmessage = function (event) {
     let date = new Date();
     switch (msg.eventType) {
         case "onMessage":
-            AddMessageToChannel(msg, date);
+            addMessageToChannel(msg, date);
             showMessage(msg, date);
             console.log(msg);
             break;

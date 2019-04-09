@@ -13,7 +13,7 @@ function updateChannelsList(message) {
     channelsListDOM.innerHTML += setChannelDOM(channelsList[channel].name, channelsList[channel].id, darkness);
     console.log(channelsList[channel].name);
   }
-
+  document.getElementById("current-channel").innerText = getChannelNameFromId(currentChannelId);
   setPlusMinusIcon();
 }
 
