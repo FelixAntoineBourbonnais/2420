@@ -2,6 +2,11 @@ var channelsList = [];
 var channelsIdList = [];
 var currentChannelId = "";
 
+/**
+ * Updates the local channel list and sets the correct HTML
+ * for every channel
+ * @param  {Message} message
+ */
 function updateChannelsList(message) {
   retrieveChannelList(message);
 
@@ -17,6 +22,11 @@ function updateChannelsList(message) {
   setPlusMinusIcon();
 }
 
+/**
+ * Adds the new channels to the local list, updates changing parameters
+ * of current channels
+ * @param  {} message
+ */
 function retrieveChannelList(message) {
   for (i = 0; i < message.data.length; ++i) {
     if (!channelsIdList.includes(message.data[i].id)) {
@@ -29,6 +39,13 @@ function retrieveChannelList(message) {
   }
 }
 
+/**
+ * Sets a channel in the DOM, with the correct CSS and HTML
+ * @param  {string} channelName
+ * @param  {string} channelId
+ * @param  {string} darkness
+ * @return {string} The block of HTML for the channel
+ */
 function setChannelDOM(channelName, channelId, darkness) {
   htmlBlock = "";
   if (channelId === "dbf646dc-5006-4d9f-8815-fd37514818ee") {
@@ -53,6 +70,10 @@ function setChannelDOM(channelName, channelId, darkness) {
   return htmlBlock;
 }
 
+/**
+ * Toggles correctly the plus and minus icon depending on the context
+ * (Weither or not you're in a channel)
+ */
 function setPlusMinusIcon() {
   const icons = document.getElementsByClassName("plus-minus-icon");
 
@@ -66,6 +87,9 @@ function setPlusMinusIcon() {
   }
 }
 
+/**
+ * Sends a new channel request to the server
+ */
 function requestAddNewChannel() {
   let channelName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
   let channelId = generateChannelId();
