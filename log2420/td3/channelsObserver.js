@@ -95,23 +95,9 @@ function setPlusMinusIcon() {
 /**
  * Sends a new channel request to the server
  */
-function requestAddNewChannel() {
+function addNewChannel() {
   let channelName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
-  let channelId = generateChannelId();
-  for (i = 0; ; i++) {
-    if (channelsList[i].id === channelId) {
-      channelId = generateChannelId();
-    } else {
-      break;
-    }
-  }
-  let newChannel = new Channel(channelId, channelName, false, null, 0);
   let date = new Date();
-  let message = new Message("onCreateChannel", channelsList[0].id, newChannel, user, date);
+  let message = new Message("onCreateChannel", channelsList[0].id, channelName, user, date);
   sendText(message);
-  console.log("newChannel");
-}
-
-function addNewChannel(message) {
-  console.log(message);
 }

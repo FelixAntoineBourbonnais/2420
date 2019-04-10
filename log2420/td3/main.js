@@ -103,18 +103,3 @@ function getChannelNameFromId(channelId) {
     }
     return;
 }
-
-/**
- * Generates a ranom channel id
- * @return {string} A random id of format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
- */
-function generateChannelId() {
-    Math.floor(Math.random()*90000) + 10000;
-    let firstPart = (Math.floor(Math.random()*90000000)+10000000).toString(36);
-    let secondPart = (Math.floor(Math.random()*9000)+1000).toString(36);
-    let thirdPart = (Math.floor(Math.random()*9000)+1000).toString(36);
-    let fourthPart = (Math.floor(Math.random()*9000)+1000).toString(36);
-    let fifthPart = (Math.floor(Math.random()*900000000000)+100000000000).toString(36);
-
-    return firstPart + "-" + secondPart + "-" + thirdPart + "-" + fourthPart + "-" + fifthPart;
-}

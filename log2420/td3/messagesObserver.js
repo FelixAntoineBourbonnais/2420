@@ -32,7 +32,7 @@ function sendMessage() {
         if (inputMessage.length !== 0) {
             let date = new Date();
             let message = new Message("onMessage", currentChannelId, inputMessage, user, date);
-            socket.send(JSON.stringify(message));
+            sendText(message);
 
             $("#text-input").val("");
         }
@@ -88,6 +88,10 @@ function addMessageToChannel(msg, date) {
         channel.messages = Array();
     msg.timestamp = date;
     channel.messages.push(msg);
+
+    if (msg.channelId === currentChannelId) {
+        showMessage(msg, date);
+    }
 }
 
 /**

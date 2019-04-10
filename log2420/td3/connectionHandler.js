@@ -14,14 +14,10 @@ socket.onmessage = function (event) {
     switch (msg.eventType) {
         case "onMessage":
             addMessageToChannel(msg, date);
-            if (msg.channelId === currentChannelId) {
-                showMessage(msg, date);
-            }
             console.log(msg);
             break;
         case "onCreateChannel":
             console.log("onCreateChannel");
-            addNewChannel(msg);
             break;
         case "updateChannelsList":
             console.log("updateChannelsList");
