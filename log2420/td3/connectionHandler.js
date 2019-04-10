@@ -20,8 +20,8 @@ socket.onmessage = function (event) {
             console.log("onCreateChannel");
             break;
         case "updateChannelsList":
-            console.log("updateChannelsList");
             updateChannelsList(msg);
+            console.log("updateChannelsList");
             break;
         case "onError":
             showMessage(msg, date);

@@ -96,8 +96,13 @@ function setPlusMinusIcon() {
  * Sends a new channel request to the server
  */
 function addNewChannel() {
-  let channelName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
+  /*let channelName = prompt("Veuillez entrer un nom de groupe:", "Nom de groupe");
   let date = new Date();
   let message = new Message("onCreateChannel", channelsList[0].id, channelName, user, date);
-  sendText(message);
+  sendText(message);*/
+
+  let date = new Date();
+  let testmessage = new Message("onGetChannel", channelsList[0].id, channelsList[0].id, user, date);
+  sendText(testmessage);
+  console.log("onGetChannel: ");
 }
