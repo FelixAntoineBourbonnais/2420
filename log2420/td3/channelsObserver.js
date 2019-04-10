@@ -56,9 +56,9 @@ function setChannelDOM(channelName, channelId, darkness) {
     htmlBlock += "<div class='group " + darkness + "' name='" + channelName +"'>";
     htmlBlock += "<i id='star' class='fas fa-star'></i>";
     htmlBlock += "<div id='group-name'onclick=";
-    htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">" + channelName + "</div>";
+    htmlBlock += "\"getChannel(" + "'" + channelId + "'" + ")\">" + channelName + "</div>";
     htmlBlock += "<div id='group-default' onclick=";
-    htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">";
+    htmlBlock += "\"getChannel(" + "'" + channelId + "'" + ")\">";
     htmlBlock += "<span id='group-text-default'>default</span>";
     htmlBlock += "</div></div>";
   } else {
@@ -66,9 +66,9 @@ function setChannelDOM(channelName, channelId, darkness) {
     htmlBlock += "<i class='plus-minus-icon fas fa-plus color-plus channel-icon' onclick=";
     htmlBlock += "\"joinChannel(" + "'" + channelId + "'" + ")\"></i>";
     htmlBlock += "<div id='group-name' onclick=";
-    htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">" + channelName + "</div>";
+    htmlBlock += "\"getChannel(" + "'" + channelId + "'" + ")\">" + channelName + "</div>";
     htmlBlock += "<div onclick=";
-    htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\"></div>";
+    htmlBlock += "\"getChannel(" + "'" + channelId + "'" + ")\"></div>";
     htmlBlock += "</div>";
   }
 

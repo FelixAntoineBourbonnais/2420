@@ -9,7 +9,7 @@ function showMessage(message, date) {
         newSentMessage = "";
         newSentMessage += "<div class='sent-message'>";
         newSentMessage += "<div id='sent-inner-text'>" + message.data+ "</div>";
-        newSentMessage += "<div id='sent-date'>" + formatDate(date) + "</div></div>";
+        newSentMessage += "<div id='sent-date'>" + date + "</div></div>";
         chatArea.innerHTML += newSentMessage;
     } else {
         messageData = getMessageId(message);
@@ -17,7 +17,7 @@ function showMessage(message, date) {
         newReceivedMessage += "<div class='received-message'>";
         newReceivedMessage += "<div id='received-name'>" + message.sender + "</div>";
         newReceivedMessage += messageData
-        newReceivedMessage += "<div id='received-date'>" + formatDate(date) + "</div></div>";
+        newReceivedMessage += "<div id='received-date'>" + date + "</div></div>";
         chatArea.innerHTML += newReceivedMessage;
     }
     chatArea.scrollTop = chatArea.scrollHeight;
@@ -51,6 +51,7 @@ function sendMessage() {
  */
 function sendText(message) {
     if (socket.readyState === 1) {
+        console.log(message);
         socket.send(JSON.stringify(message));
     }
 }
@@ -83,11 +84,11 @@ function getMessageId(message) {
  * @param  {Date} date
  */
 function addMessageToChannel(msg, date) {
-    channel = findChannel(msg.channelId);
-    if (channel.messages === null)
-        channel.messages = Array();
-    msg.timestamp = date;
-    channel.messages.push(msg);
+    // channel = findChannel(msg.channelId);
+    // if (channel.messages === null)
+    //     channel.messages = Array();
+    // msg.timestamp = date;
+    // channel.messages.push(msg);
 
     if (msg.channelId === currentChannelId) {
         showMessage(msg, date);
@@ -98,30 +99,37 @@ function addMessageToChannel(msg, date) {
  * Loads all the messages of a channel on screen
  * @param  {string} channelId
  */
-function loadMessages(channelId) {
-    channel = findChannel(channelId);
+function loadMessages(msg) {
     document.getElementById('chat-area').innerText = "";
-    currentChannelId = channelId;
-    if (channel.messages !== null) {
-        for (i = 0; i < channel.messages.length; ++i) {
-            showMessage(channel.messages[i], channel.messages[i].timestamp);
+    currentChannelId = msg.id;
+    if (msg.data.messages !== null) {
+        for (i = 0; i < msg.data.messages.length; ++i) {
+            showMessage(msg.data.messages[i], msg.data.messages[i].timestamp);
         }
     }
     setDarkness();
     setPlusMinusIcon();
-    document.getElementsByName(channel.name)[0].style.backgroundColor =  "rgb(150, 199, 188)";
-    document.getElementById('current-channel').innerText = getChannelNameFromId(channelId);
+    document.getElementsByName(msg.data.name)[0].style.backgroundColor =  "rgb(150, 199, 188)";
+    document.getElementById('current-channel').innerText = getChannelNameFromId(msg.id);
 
 }
 
-/**
- * Retreives a channel from a local channel list
- * @param  {string} channelId
- * @return {Channel} The channel.
- */
-function findChannel(channelId) {
-    for (i = 0; i < channelsList.length; ++i) {
-        if (channelsList[i].id === channelId)
-            return channelsList[i];
+// /**
+//  * Retreives a channel from a local channel list
+//  * @param  {string} channelId
+//  * @return {Channel} The channel.
+//  */
+// function findChannel(channelId) {
+//     for (i = 0; i < channelsList.length; ++i) {
+//         if (channelsList[i].id === channelId)
+//             return channelsList[i];
+//     }
+// }
+
+function getChannel(channelId) {
+    let date = new Date();
+    let message = new Message("onGetChannel", channelId, channelId, user, date);
+    if (socket.readyState === 1) {
+        socket.send(JSON.stringify(message));
     }
 }
