@@ -13,12 +13,16 @@ socket.onmessage = function (event) {
     let date = new Date();
     switch (msg.eventType) {
         case "onMessage":
+            console.log("onMessage");
             addMessageToChannel(msg, date);
-            console.log(msg);
             break;
         case "onCreateChannel":
             console.log("onCreateChannel");
             break;
+        case "onGetChannel":
+            loadMessages(msg);
+            console.log("onGetChannel");
+            break;     
         case "updateChannelsList":
             updateChannelsList(msg);
             console.log("updateChannelsList");
