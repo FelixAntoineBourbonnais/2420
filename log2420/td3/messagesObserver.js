@@ -103,6 +103,7 @@ function loadMessages(channelId) {
             showMessage(channel.messages[i], channel.messages[i].timestamp);
         }
     }
+    document.getElementById('current-channel').innerText = getChannelNameFromId(channelId);
 }
 
 /**

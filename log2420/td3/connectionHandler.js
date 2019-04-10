@@ -14,7 +14,9 @@ socket.onmessage = function (event) {
     switch (msg.eventType) {
         case "onMessage":
             addMessageToChannel(msg, date);
-            showMessage(msg, date);
+            if (msg.channelId === currentChannelId) {
+                showMessage(msg, date);
+            }
             console.log(msg);
             break;
         case "onCreateChannel":

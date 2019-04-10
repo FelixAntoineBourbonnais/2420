@@ -19,6 +19,7 @@ let socket = new WebSocket("ws://log2420-nginx.info.polymtl.ca/chatservice?usern
 
 $(document).ready(function () {
     document.getElementById("username").innerText = user;
+    currentChannelId = "dbf646dc-5006-4d9f-8815-fd37514818ee";
     sendMessage();
 });
 
