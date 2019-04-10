@@ -1,6 +1,6 @@
 /**
  * Shows the new message to the screen
- * @param  {} message - Data from the event received from server
+ * @param  {Data} message - Data from the event received from server
  * @param  {Date} date
  */
 function showMessage(message, date) {
@@ -103,7 +103,11 @@ function loadMessages(channelId) {
             showMessage(channel.messages[i], channel.messages[i].timestamp);
         }
     }
+    setDarkness();
+    setPlusMinusIcon();
+    document.getElementsByName(channel.name)[0].style.backgroundColor =  "rgb(150, 199, 188)";
     document.getElementById('current-channel').innerText = getChannelNameFromId(channelId);
+
 }
 
 /**

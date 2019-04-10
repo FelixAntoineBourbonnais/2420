@@ -9,17 +9,21 @@ var currentChannelId = "";
  */
 function updateChannelsList(message) {
   retrieveChannelList(message);
-
+  setDarkness();
+  setPlusMinusIcon();
+}
+/**
+ * Sets the darkness of a group
+ */
+function setDarkness() {
   let channelsListDOM = document.getElementById("channels-list");
   channelsListDOM.innerHTML = "";
-  
+
   for (const channel in channelsList) {
     let darkness = (channel % 2 === 0) ? "dark" : "light";
     channelsListDOM.innerHTML += setChannelDOM(channelsList[channel].name, channelsList[channel].id, darkness);
     console.log(channelsList[channel].name);
   }
-  // document.getElementById("current-channel").innerText = getChannelNameFromId(currentChannelId);
-  setPlusMinusIcon();
 }
 
 /**
@@ -49,7 +53,7 @@ function retrieveChannelList(message) {
 function setChannelDOM(channelName, channelId, darkness) {
   htmlBlock = "";
   if (channelId === "dbf646dc-5006-4d9f-8815-fd37514818ee") {
-    htmlBlock += "<div class='group " + darkness + "'>";
+    htmlBlock += "<div class='group " + darkness + "' name='" + channelName +"'>";
     htmlBlock += "<i id='star' class='fas fa-star'></i>";
     htmlBlock += "<div id='group-name'onclick=";
     htmlBlock += "\"loadMessages(" + "'" + channelId + "'" + ")\">" + channelName + "</div>";
@@ -58,7 +62,7 @@ function setChannelDOM(channelName, channelId, darkness) {
     htmlBlock += "<span id='group-text-default'>default</span>";
     htmlBlock += "</div></div>";
   } else {
-    htmlBlock += "<div class='group " + darkness + "'>";
+    htmlBlock += "<div class='group " + darkness + "' name='" + channelName +"'>";
     htmlBlock += "<i class='plus-minus-icon fas fa-plus color-plus channel-icon' onclick=";
     htmlBlock += "\"joinChannel(" + "'" + channelId + "'" + ")\"></i>";
     htmlBlock += "<div id='group-name' onclick=";

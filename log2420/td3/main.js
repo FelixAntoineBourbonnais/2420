@@ -7,7 +7,7 @@ while (usernameVerification) {
         if (answer.length > 13 || answer.length < 3) {
             alert("Veuiller entrer un nom d'utilisateur entre 3 et 13 caractères!");
         } else if (answer == "Admin") { 
-            alert("Le nom Admin est prohibe")
+            alert("Le nom Admin est interdit!")
         } else {
             user = answer;
             usernameVerification = false;
